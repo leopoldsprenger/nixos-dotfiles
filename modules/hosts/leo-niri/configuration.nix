@@ -13,6 +13,7 @@
         self.nixosModules.noctalia
         self.nixosModules.home-manager
         self.nixosModules.git
+        self.nixosModules.cursor
       ];
 
       nix.settings.experimental-features = [ "nix-command" "flakes" ];

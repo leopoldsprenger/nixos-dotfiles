@@ -31,10 +31,11 @@
           layout.gaps = 8;
 
           binds = {
-            "Mod+Return".spawn-sh = "env LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.alacritty}";
-            "Mod+Q".close-window = { };
+            "Mod+Q".spawn-sh = "env LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty}";
+            "Mod+W".close-window = { };
             "Mod+Shift+E".quit = { };
             "Mod+Space".spawn-sh = "${lib.getExe self'.packages.noctaliaConfig} ipc call launcher toggle";
+            "Mod+B".spawn-sh = "${lib.getExe pkgs.firefox}";
           };
 
           outputs = {
