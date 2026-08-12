@@ -12,24 +12,37 @@
   perSystem =
     { pkgs, lib, self', ... }:
     {
-      # This bakes a config.kdl from the settings below directly into a
-      # wrapped niri package - no separate KDL file to hand-maintain.
-      # Add more here as you customize; see:
-      # https://birdeehub.github.io/nix-wrapper-modules/niri.html
       packages.leoNiri = inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
         settings = {
-          # Launch noctalia (the bar/launcher/notifications/etc. shell) as
-          # soon as niri starts.
+          # Startet die Noctalia-Shell direkt beim Booten
           spawn-at-startup = [
             (lib.getExe self'.packages.noctaliaConfig)
           ];
 
-          # Lets plain X11 apps run under niri.
+          hotkey-overlay = {
+            skip-at-statup = true;
+          };
+
+          # Ermöglicht X11-Apps die Ausführung unter Wayland via Xwayland-Satellite
           xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
-          layout.gaps = 8;
+          # Visuelles Layout für ein sauberes Desktop-Gefühl
+          layout = {
+            gaps = 6; # Leicht vergrößerte Abstände für einen luftigeren Look
+            
+            # Schmale, moderne Fensterrahmen passend zur Noctalia-Ästhetik
+            border = {
+              width = 2;
+              active-color = "#74c7ecb3";   # Transluzentes Pastellblau (z. B. Catppuccin-Stil)
+              inactive-color = "#31324466"; # Stark transparente, dunkle Inaktivitätsgrenze
+            };
+            
+            # Verhindert, dass Rahmen hinter transparenten Fenstern durchscheinen
+            focus-ring.off = { }; 
+          };
 
+          # Tastenkombinationen
           binds = {
             "Mod+Q".spawn-sh = "env LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty}";
             "Mod+W".close-window = { };
@@ -38,6 +51,19 @@
             "Mod+B".spawn-sh = "${lib.getExe pkgs.firefox}";
           };
 
+          # Globale Fensterregeln (Wichtig: Als Liste definiert)
+          window-rules = [
+            {
+              matches = [ { } ]; # Trifft auf alle Fenster zu
+              opacity = 0.93;     # Leicht verringerte Transparenz für bessere Lesbarkeit
+              
+              # Erzwingt perfekt gerundete Fensterecken passend zur Shell
+              geometry-corner-radius = 12;
+              clip-to-geometry = true;
+            }
+          ];
+
+          # Monitor-Einstellungen
           outputs = {
             "Virtual-1" = {
               mode = "1920x1080@60.000";
@@ -50,3 +76,4 @@
       };
     };
 }
+
