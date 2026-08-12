@@ -36,6 +36,15 @@
             "Mod+Shift+E".quit = { };
             "Mod+Space".spawn-sh = "${lib.getExe self'.packages.noctaliaConfig} ipc call launcher toggle";
           };
+
+          outputs = {
+            "Virtual-1" = {
+              mode = "1920x1080@60.000";
+              scale = 1.0;
+            };
+
+            "Unknown-1" = { off = { }; };
+          };
         };
       };
     };
