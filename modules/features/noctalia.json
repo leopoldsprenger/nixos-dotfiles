@@ -2,10 +2,10 @@
   "settings": {
     "settingsVersion": 59,
     "bar": {
-      "barType": "simple",
-      "position": "top",
+      "barType": "floating",
+      "position": "left",
       "monitors": [],
-      "density": "default",
+      "density": "compact",
       "showOutline": false,
       "showCapsule": true,
       "capsuleOpacity": 1,
@@ -297,7 +297,7 @@
     "wallpaper": {
       "enabled": true,
       "overviewEnabled": false,
-      "directory": "/home/leo/Pictures/Wallpapers",
+      "directory": "/home/leo/dotfiles/resources/wallpapers",
       "monitorDirectories": [],
       "enableMultiMonitorDirectories": false,
       "showHiddenFiles": false,
@@ -456,7 +456,7 @@
       "disableDesktopWidgets": true
     },
     "dock": {
-      "enabled": true,
+      "enabled": false,
       "position": "bottom",
       "displayMode": "auto_hide",
       "dockType": "floating",
@@ -604,7 +604,7 @@
       "backlightDeviceMappings": []
     },
     "colorSchemes": {
-      "useWallpaperColors": false,
+      "useWallpaperColors": true,
       "predefinedScheme": "Noctalia (default)",
       "darkMode": true,
       "schedulingMode": "off",
@@ -675,7 +675,38 @@
       "Virtual-1": "/nix/store/dz8yz607fd7p3r7rg0bwjm82h20khh84-noctalia-shell-4.7.7/share/noctalia-shell/Assets/Wallpaper/noctalia.png"
     },
     "desktopWidgetsEditMode": false,
-    "display": {},
+    "display": {
+      "Unknown-1": {
+        "name": "Unknown-1",
+        "connected": false,
+        "scale": 1,
+        "width": 0,
+        "height": 0,
+        "x": 0,
+        "y": 0,
+        "physical_width": 211,
+        "physical_height": 158,
+        "refresh_rate": 0,
+        "vrr_supported": false,
+        "vrr_enabled": false,
+        "transform": "Normal"
+      },
+      "Virtual-1": {
+        "name": "Virtual-1",
+        "connected": true,
+        "scale": 1,
+        "width": 1920,
+        "height": 1080,
+        "x": 0,
+        "y": 0,
+        "physical_width": 320,
+        "physical_height": 200,
+        "refresh_rate": 60000,
+        "vrr_supported": false,
+        "vrr_enabled": false,
+        "transform": "Normal"
+      }
+    },
     "notificationsState": {
       "lastSeenTs": 0
     },
