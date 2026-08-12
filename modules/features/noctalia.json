@@ -70,17 +70,6 @@
             "usePadding": false
           },
           {
-            "colorizeIcons": false,
-            "hideMode": "hidden",
-            "id": "ActiveWindow",
-            "maxWidth": 145,
-            "scrollingMode": "hover",
-            "showIcon": true,
-            "showText": true,
-            "textColor": "none",
-            "useFixedWidth": false
-          },
-          {
             "compactMode": false,
             "hideMode": "hidden",
             "hideWhenIdle": false,
@@ -301,7 +290,7 @@
       "monitorDirectories": [],
       "enableMultiMonitorDirectories": false,
       "showHiddenFiles": false,
-      "viewMode": "single",
+      "viewMode": "recursive",
       "setWallpaperOnAllMonitors": true,
       "linkLightAndDarkWallpapers": true,
       "fillMode": "crop",
@@ -323,7 +312,7 @@
       "skipStartupTransition": false,
       "transitionEdgeSmoothness": 0.05,
       "panelPosition": "follow_bar",
-      "hideWallpaperFilenames": false,
+      "hideWallpaperFilenames": true,
       "useOriginalImages": false,
       "overviewBlur": 0.4,
       "overviewTint": 0.6,
@@ -339,7 +328,22 @@
       "wallhavenResolutionWidth": "",
       "wallhavenResolutionHeight": "",
       "sortOrder": "name",
-      "favorites": []
+      "favorites": [
+        {
+          "appearance": "dark",
+          "colorScheme": "Noctalia (default)",
+          "darkMode": true,
+          "generationMethod": "tonal-spot",
+          "paletteColors": [
+            "#82cfff",
+            "#b6c9d8",
+            "#ccc1e9",
+            "#ffb4ab"
+          ],
+          "path": "/home/leo/dotfiles/resources/wallpapers/mountain-dark.png",
+          "useWallpaperColors": true
+        }
+      ]
     },
     "appLauncher": {
       "enableClipboardHistory": false,
@@ -672,7 +676,7 @@
     "openedPanel": "",
     "lockScreenActive": false,
     "wallpapers": {
-      "Virtual-1": "/nix/store/dz8yz607fd7p3r7rg0bwjm82h20khh84-noctalia-shell-4.7.7/share/noctalia-shell/Assets/Wallpaper/noctalia.png"
+      "Virtual-1": "/home/leo/dotfiles/resources/wallpapers/mountain-dark.png"
     },
     "desktopWidgetsEditMode": false,
     "display": {
@@ -708,7 +712,7 @@
       }
     },
     "notificationsState": {
-      "lastSeenTs": 0
+      "lastSeenTs": 1786529486000
     },
     "changelogState": {
       "lastSeenVersion": "v4.7.7"
