@@ -21,7 +21,7 @@
           ];
 
           hotkey-overlay = {
-            skip-at-statup = true;
+            skip-at-startup = true;
           };
 
           # Ermöglicht X11-Apps die Ausführung unter Wayland via Xwayland-Satellite

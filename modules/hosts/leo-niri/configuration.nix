@@ -15,6 +15,7 @@
         self.nixosModules.git
         self.nixosModules.cursor
         self.nixosModules.kitty
+        self.nixosModules.neovim
       ];
 
       nix.settings.experimental-features = [ "nix-command" "flakes" ];
