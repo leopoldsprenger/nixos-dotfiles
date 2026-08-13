@@ -44,6 +44,7 @@
 
           # Tastenkombinationen
           binds = {
+            # TODO: remove flag once on bare metal
             "Mod+Q".spawn-sh = "env LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty}";
             "Mod+W".close-window = { };
             "Mod+Shift+E".quit = { };
@@ -66,8 +67,8 @@
           # Monitor-Einstellungen
           outputs = {
             "Virtual-1" = {
-              mode = "1920x1080@60.000";
-              scale = 1.0;
+              mode = "3840x2160@60.000";
+              scale = 1.8;
             };
 
             "Unknown-1" = { off = { }; };

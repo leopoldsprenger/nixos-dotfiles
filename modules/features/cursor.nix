@@ -1,7 +1,7 @@
 { ... }: {
   flake.nixosModules.cursor = { pkgs, ... }: let
     cursorTheme = "Bibata-Modern-Ice";
-    cursorSize = 24;
+    cursorSize = 16;
     cursorPackage = pkgs.bibata-cursors;
   in {
     home-manager.users.leo = {

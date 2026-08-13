@@ -2,9 +2,9 @@
   flake.nixosModules.git = {
     home-manager.users.leo.programs.git = {
       enable = true;
-      userName = "Leopold Sprenger";
-      userEmail = "186564656+leopoldsprenger@users.noreply.github.com";
-      extraConfig = {
+      settings = {
+        user.name = "Leopold Sprenger";
+        user.email = "186564656+leopoldsprenger@users.noreply.github.com";
         init.defaultBranch = "main";
         pull.rebase = true;
       };

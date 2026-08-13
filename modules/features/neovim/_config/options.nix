@@ -10,6 +10,8 @@
       shiftwidth = 4;
       expandtab = true;
     };
+
+    clipboard.providers.wl-copy.enable = true;
   };
 }
 
