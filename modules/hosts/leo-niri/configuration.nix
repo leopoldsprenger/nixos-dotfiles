@@ -20,6 +20,7 @@
       self.nixosModules.clipboard
       self.nixosModules.neovim
       self.nixosModules.shell
+      self.nixosModules.terminal-apps
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];

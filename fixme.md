@@ -1,7 +1,7 @@
 [ ] fix keybinds not working for neovim
-[ ] add padding to the side of kitty terminal
+[X] add padding to the side of kitty terminal
 [ ] install jetbrains mono nerd font
-[ ] update noctalia shell with the command piping
+[X] update noctalia shell with the command piping
 [ ] change border color in niri
 [ ] learn niri shortcuts / configure them first
 [ ] install yazi
@@ -19,3 +19,4 @@
 [ ] add a theme / wallpaper switcher
 [ ] add clipboard manager
 [ ] fix clipboard not being shared in neovim
+[ ] change terminal app within noctalia launcher
