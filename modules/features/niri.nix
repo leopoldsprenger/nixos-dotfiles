@@ -24,6 +24,8 @@
           (lib.getExe self'.packages.noctaliaConfig)
         ];
 
+        prefer-no-csd = true;
+
         hotkey-overlay = {
           skip-at-startup = true;
         };
@@ -80,9 +82,10 @@
 
         input = {
           keyboard = {
-            repeat-delay = 400;
-            repeat-rate = 40;
+            repeat-delay = 200;
+            repeat-rate = 35;
           };
+          focus-follows-mouse = {};
         };
       };
     };

@@ -164,7 +164,7 @@
       "screenOverrides": []
     },
     "general": {
-      "avatarImage": "/home/leo/.face",
+      "avatarImage": "/home/leo/dotfiles/resources/profile-pictures/cat-white.jpg",
       "dimmerOpacity": 0.2,
       "showScreenCorners": false,
       "forceBlackScreenCorners": false,
