@@ -11,6 +11,7 @@
       ./hardware-configuration.nix
 
       # Provides programs.niri, configured declaratively.
+      self.nixosModules.fonts
       self.nixosModules.niri
       self.nixosModules.noctalia
       self.nixosModules.home-manager
