@@ -73,6 +73,11 @@
       };
     };
 
+    environment.sessionVariables = {
+      # TODO: change once on bare metal
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
+
     environment.systemPackages = with pkgs; [
       vim
       nano
