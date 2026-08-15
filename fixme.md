@@ -1,22 +1,32 @@
+## Todo
+
 [ ] fix keybinds not working for neovim
-[X] add padding to the side of kitty terminal
-[X] install jetbrains mono nerd font
-[X] update noctalia shell with the command piping
-[ ] change border color in niri
-[ ] learn niri shortcuts / configure them first
-[X] install yazi
-[ ] configure firefox
+[ ] change border color in mango
+[ ] learn mango shortcuts / configure them first
+[ ] fix mouse cursor being upside down in mango
+[ ] fix workspaces not showing up properly with mangowm in noctalia
+[ ] install and set up a proper login screen
+[ ] configure noctalia bar further and customize lock screen
+[ ] configure helium and delete firefox
 [ ] set up python coding environment
 [ ] add sops age for private key and add to github and gitlab
 [ ] update install instructions and readme
 [ ] get rid of unnecessary comments
-[X] install btop
-[ ] properly configure niri border color and transparency
+[ ] properly configure mango border color and transparency
 [ ] install and configure mail program
-[X] set up minimal key repeat time
 [ ] install thunar
 [ ] rice gtk and qt applications
 [ ] add a theme / wallpaper switcher
 [ ] add clipboard manager
 [ ] fix clipboard not being shared in neovim
 [ ] change terminal app within noctalia launcher
+[ ] switch mangowm config to proper nix
+
+## Done
+
+[X] set up minimal key repeat time
+[X] install btop
+[X] add padding to the side of kitty terminal
+[X] install jetbrains mono nerd font
+[X] update noctalia shell with the command piping
+[X] install yazi
