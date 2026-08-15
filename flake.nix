@@ -10,6 +10,8 @@
 
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
+    noctalia.url = "github:noctalia-dev/noctalia";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -20,12 +22,12 @@
     mango.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    inputs:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } (
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} (
       (inputs.import-tree.filterNot (
         path:
           inputs.nixpkgs.lib.hasSuffix "hardware-configuration.nix" path
-      )) ./modules
+      ))
+      ./modules
     );
 }

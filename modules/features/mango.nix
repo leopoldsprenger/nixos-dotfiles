@@ -47,7 +47,7 @@
       bind=SUPER,Q,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty}
       bind=SUPER,W,killclient
       bind=SUPER+SHIFT,E,quit
-      bind=SUPER,Space,spawn,${lib.getExe noctalia} ipc call launcher toggle
+      bind=Super,Space,spawn,${lib.getExe noctalia} msg panel-toggle launcher
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
 
       bind=SUPER,Left,focusdir,left
