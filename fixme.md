@@ -2,12 +2,13 @@
 
 ### Immediate
 
-[ ] fix keybinds not working for neovim
 [ ] fix clipboard not being shared in neovim
-[ ] set up python coding environment
 [ ] add sops age for private key and add to github and gitlab
+[ ] set up python coding environment
 [ ] create a common host
 [ ] change hostname to macmini-vm
+[ ] automatically create a projects folder with subdirs if not present
+[ ] add mkproj and projects scripts
 
 ### After
 
@@ -20,6 +21,7 @@
 
 ### Later
 
+[ ] install and configure tmux
 [ ] rice noctalia properly
 [ ] change border color in mango
 [ ] install and set up a proper login screen
@@ -41,3 +43,4 @@
 [X] install yazi
 [X] switch to noctalia v5
 [X] fix workspaces not showing up properly with mangowm in noctalia
+[X] fix keybinds not working for neovim

@@ -18,12 +18,38 @@
           desc = "Save current file";
         };
 
-        # Direct API call wrapped to evaluate the path argument
         "<leader>cd" = {
-          action = "function() vim.cmd.cd(vim.fn.expand('%:p:h')) end";
+          action = "function() vim.cmd.Ex(vim.fn.expand('%:p:h')) end";
           lua = true;
           silent = true;
-          desc = "Change working directory to current file";
+          desc = "Open netrw explorer in current file directory";
+        };
+
+        "<leader>e" = {
+          action = ''
+            function()
+              local closed = false
+              for _, win in ipairs(vim.api.nvim_list_wins()) do
+                local config = vim.api.nvim_win_get_config(win)
+                -- Pruefen, ob es ein Float ist und ob es sich um ein Diagnostic-Fenster handelt
+                if config.relative ~= "" then
+                  local buf = vim.api.nvim_win_get_buf(win)
+                  local ft = vim.bo[buf].filetype
+                  -- Neovim oeffnet Diagnosen standardmaessig ohne spezifischen Filetype, aber oft erkennbar
+                  if ft == "" or ft == "diagnostic" then
+                    vim.api.nvim_win_close(win, true)
+                    closed = true
+                  end
+                end
+              end
+              if not closed then
+                vim.diagnostic.open_float({ scope = 'line', focus = false })
+              end
+            end
+          '';
+          lua = true;
+          silent = true;
+          desc = "Toggle inline diagnostics/errors for the current line";
         };
 
         "]d" = {
@@ -84,3 +110,4 @@
     '';
   };
 }
+
