@@ -3,8 +3,6 @@
 ### Immediate
 
 [ ] set the default editor to nvim
-[ ] fix clipboard not being shared in neovim
-[ ] add sops age for private key and add to github and gitlab
 [ ] set up python coding environment
 [ ] create a common host
 [ ] change hostname to macmini-vm
@@ -46,3 +44,4 @@
 [X] switch to noctalia v5
 [X] fix workspaces not showing up properly with mangowm in noctalia
 [X] fix keybinds not working for neovim
+[X] add sops age for private key and add to github and gitlab
