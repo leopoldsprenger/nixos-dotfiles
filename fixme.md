@@ -2,6 +2,7 @@
 
 ### Immediate
 
+[ ] set the default editor to nvim
 [ ] fix clipboard not being shared in neovim
 [ ] add sops age for private key and add to github and gitlab
 [ ] set up python coding environment
@@ -30,6 +31,7 @@
 [ ] install and configure mail program
 [ ] add a theme / wallpaper switcher
 [ ] switch mangowm config to proper nix
+[ ] fully delete alacritty off my system
 
 ## Done
 

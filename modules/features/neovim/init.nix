@@ -39,6 +39,7 @@
 
     programs.nvf = {
       enable = true;
+      defaultEditor = true;
     };
   };
 }

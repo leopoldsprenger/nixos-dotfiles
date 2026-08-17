@@ -1,0 +1,33 @@
+# .sops.yaml
+#
+# Defines who (which machines) can decrypt which secrets. The `age`
+# values below are PUBLIC keys - safe to commit, that's the whole point
+# of asymmetric encryption. Never put a private key (an age identity,
+# the output of `age-keygen`) in this file.
+#
+# To add another machine as a recipient (so it can decrypt the same
+# GitHub/GitLab keys): generate an age keypair on it, add its public key
+# below under the right anchor(s), then run `sops updatekeys` on every
+# secrets file that anchor appears in. See README.md, section
+# "Adding another machine".
+
+keys:
+  # This machine's age public key, from `age-keygen`. Replace before
+  # encrypting anything - see README.md, "Set up your sops decryption
+  # key".
+  - &leo_age age1y79eu6a2lr4h3vfjvzyjevtwqk4kcvf79xljtx2m44pppu9zjdkqwz0ff7
+
+creation_rules:
+  # github.yaml: recipients = every machine (NixOS or not) that should
+  # be able to push to your private GitHub repos.
+  - path_regex: ^resources/secrets/github\.yaml$
+    key_groups:
+      - age:
+          - *leo_age
+
+  # gitlab.yaml: recipients = every NixOS machine that should be able to
+  # push to your private GitLab repos.
+  - path_regex: ^resources/secrets/gitlab\.yaml$
+    key_groups:
+      - age:
+          - *leo_age

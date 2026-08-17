@@ -16,6 +16,7 @@
       self.nixosModules.mango
       self.nixosModules.noctalia
       self.nixosModules.git
+      self.nixosModules.ssh
       self.nixosModules.cursor
       self.nixosModules.kitty
       self.nixosModules.clipboard
