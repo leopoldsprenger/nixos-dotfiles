@@ -47,6 +47,8 @@
         };
 
         interactiveShellInit = ''
+          path=("$HOME/.local/bin" "$HOME/bin" $path)
+
           export UV_PYTHON_PREFERENCE=only-system
 
           source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh

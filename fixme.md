@@ -5,7 +5,6 @@
 [ ] set up coding environment the nix way
 [ ] create a common host
 [ ] change hostname to macmini-vm
-[ ] add mkproj and projects scripts
 [ ] sync my dotfiles to github
 
 ### After
@@ -22,7 +21,6 @@
 ### Later
 
 [ ] install and configure tmux
-[ ] fix eza not accepting 'ls dir' syntax
 [ ] rice noctalia properly
     [ ] copy this guy again: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
     [ ] but change colors and replace starship with nixOS icon
@@ -53,3 +51,5 @@
 [X] add sops age for private key and add to github and gitlab
 [X] set the default editor to nvim
 [X] automatically create a projects folder with subdirs if not present
+[X] fix eza not accepting 'ls dir' syntax
+[X] add mkproj and projects scripts

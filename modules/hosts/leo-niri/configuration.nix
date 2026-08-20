@@ -25,6 +25,7 @@
       self.nixosModules.terminal-apps
       self.nixosModules.firefox
       self.nixosModules.ensure-project-dirs
+      self.nixosModules.project-helpers
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
