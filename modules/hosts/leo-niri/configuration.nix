@@ -23,6 +23,7 @@
       self.nixosModules.neovim
       self.nixosModules.shell
       self.nixosModules.terminal-apps
+      self.nixosModules.firefox
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
