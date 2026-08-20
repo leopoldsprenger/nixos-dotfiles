@@ -40,6 +40,9 @@
       focused_opacity=0.93
       unfocused_opacity=0.93
 
+      windowrule=focused_opacity:1.0,appid:firefox
+      windowrule=unfocused_opacity:1.0,appid:firefox
+
       # --- Startup ---
       exec-once=${lib.getExe noctalia}
 
@@ -104,7 +107,6 @@
     environment.etc."mango/config.conf".source = mangoConfig;
 
     home-manager.users.leo = {
-      # Directly addresses the Home Manager D-Bus connection issue without the "programs." prefix
       dconf.enable = true;
       xdg.configFile."mango/config.conf".source = mangoConfig;
     };

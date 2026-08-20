@@ -41,8 +41,8 @@
         histFile = "$HOME/.zsh_history";
 
         shellAliases = {
-          ls = "eza --icons";
-          ll = "eza -lah --icons";
+          ls = "eza --icons=auto --group-directories-first";
+          ll = "eza -lah --icons=auto --group-directories-first";
           cat = "bat";
         };
 

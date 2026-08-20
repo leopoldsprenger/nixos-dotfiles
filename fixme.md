@@ -2,12 +2,11 @@
 
 ### Immediate
 
-[ ] set the default editor to nvim
-[ ] set up python coding environment
+[ ] set up coding environment the nix way
 [ ] create a common host
 [ ] change hostname to macmini-vm
-[ ] automatically create a projects folder with subdirs if not present
 [ ] add mkproj and projects scripts
+[ ] sync my dotfiles to github
 
 ### After
 
@@ -16,12 +15,17 @@
 [ ] install thunar
 [ ] add clipboard manager
 [ ] properly configure mango border color and transparency
+    [ ] copy this user: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
+    [ ] once I have the glazed windows, I can remove the special firefox rule
 [ ] change terminal app within noctalia launcher
 
 ### Later
 
 [ ] install and configure tmux
+[ ] fix eza not accepting 'ls dir' syntax
 [ ] rice noctalia properly
+    [ ] copy this guy again: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
+    [ ] but change colors and replace starship with nixOS icon
 [ ] change border color in mango
 [ ] install and set up a proper login screen
 [ ] update install instructions and readme
@@ -30,6 +34,8 @@
 [ ] add a theme / wallpaper switcher
 [ ] switch mangowm config to proper nix
 [ ] fully delete alacritty off my system
+[ ] add a calendar, rice obsidian and find a todo app
+[ ] install thunderbird and declaratively set up email providers
 
 ## Done
 
@@ -45,3 +51,5 @@
 [X] fix workspaces not showing up properly with mangowm in noctalia
 [X] fix keybinds not working for neovim
 [X] add sops age for private key and add to github and gitlab
+[X] set the default editor to nvim
+[X] automatically create a projects folder with subdirs if not present
