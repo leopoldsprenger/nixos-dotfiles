@@ -23,9 +23,29 @@
             "font.name.serif.x-western" = "JetBrainsMono Nerd Font";
             "font.name.sans-serif.x-western" = "JetBrainsMono Nerd Font";
             "font.name.monospace.x-western" = "JetBrainsMono Nerd Font";
+            # "Other writing systems" fallback, so non-Latin pages that
+            # don't hardcode their own font also pick up JetBrains Mono.
+            "font.name.serif.x-unicode" = "JetBrainsMono Nerd Font";
+            "font.name.sans-serif.x-unicode" = "JetBrainsMono Nerd Font";
+            "font.name.monospace.x-unicode" = "JetBrainsMono Nerd Font";
 
             "font.size.variable.x-western" = 16;
             "font.size.fixed.x-western" = 14;
+
+            # Make every website use the fonts above instead of whatever
+            # font-family the page's own CSS requests - this is the
+            # declarative equivalent of unchecking "Allow pages to choose
+            # their own fonts" in about:preferences#general. Caveat: sites
+            # that draw icons with ligature/PUA icon fonts (older
+            # Material-Icons-style setups) can render literal fallback
+            # text instead of the icon glyph while this is on - that's a
+            # known Firefox limitation of this pref (see Mozilla bugs
+            # 1638585 and 1363454), not something specific to this config.
+            # If that turns out to be behind the "text is showing up where
+            # an icon should be" issue, drop this line and do the font
+            # override as a Stylus style instead (see extensions.settings
+            # below) - Stylus lets you disable it per-site.
+            "browser.display.use_document_fonts" = 0;
 
             "browser.tabs.inTitlebar" = 1;
             "browser.uiCustomization.state" = builtins.toJSON {
@@ -80,7 +100,43 @@
               addons.youtube-shorts-block
               addons.darkreader
               addons.vimium-c
+              # Stylus: userstyles manager. Used to (a) apply per-site
+              # Tokyo Night userstyles for actual website content - Firefox
+              # "themes" only ever skin browser chrome, never page content,
+              # so there's no such thing as a theme extension that does
+              # both; Stylus is the real mechanism for the website half -
+              # and (b) as a fallback place to put a font-override style if
+              # browser.display.use_document_fonts ends up breaking icon
+              # fonts on sites you care about.
+              addons.stylus
             ];
+            settings = {
+              # Grants vimium-c's optional "bookmarks" permission at
+              # install time so Firefox never has to prompt for it and
+              # the "index bookmarks" feature just works. addonId is read
+              # straight off the built package rather than hardcoded, so
+              # this stays correct if the extension's id ever changes.
+              # If evaluation fails because addonId isn't exposed on this
+              # package, open about:debugging#/runtime/this-firefox,
+              # find Vimium C's "Extension ID" (NOT the moz-extension://
+              # UUID in the popup URL - that's a per-install runtime id,
+              # not the manifest id) and hardcode that string here instead.
+              "${addons.vimium-c.addonId}" = {
+                permissions = [
+                  "bookmarks"
+                  "clipboardRead"
+                  "clipboardWrite"
+                  "history"
+                  "notifications"
+                  "search"
+                  "sessions"
+                  "storage"
+                  "tabs"
+                  "webNavigation"
+                  "<all_urls>"
+                ];
+              };
+            };
           };
 
           bookmarks = {
@@ -101,14 +157,27 @@
             ];
           };
 
-          userContent = ''
-            :root {
-              --darkreader-neutral-background: #1a1b26 !important;
-              --darkreader-neutral-text: #c0caf5 !important;
-              --darkreader-selection-background: #33467c !important;
-              --darkreader-selection-text: #c0caf5 !important;
-            }
-          '';
+          # userContent.css used to carry a hand-rolled attempt at forcing
+          # Tokyo Night onto every website by overriding Dark Reader's
+          # internal --darkreader-neutral-background/-text/-selection-*
+          # CSS variables from outside the extension. Those variables are
+          # real, but they're meant to be read inside Dark Reader's own
+          # per-site "dynamic-theme-fixes" rules, computed fresh by Dark
+          # Reader on every page load - pinning them globally with
+          # !important from userContent.css fights that recalculation.
+          # userContent.css is also documented as unreliable for actual
+          # web content specifically (as opposed to userChrome.css, which
+          # reliably styles the browser UI) because of how Firefox's
+          # multiprocess content sandboxing interacts with it - which
+          # lines up with things looking "randomly" wrong rather than
+          # consistently wrong. Both are reasons to do content-page
+          # styling through Stylus instead, which doesn't have either
+          # problem. See the extensions list above for Stylus; add actual
+          # Tokyo Night userstyles for the sites you care about (GitHub,
+          # GitLab, etc.) from inside Stylus itself once installed - Nix
+          # can install the extension declaratively but can't seed its
+          # internal userstyle storage, so that part stays a one-time
+          # manual step, same as any other Stylus install.
 
           userChrome = ''
             :root {
@@ -125,6 +194,19 @@
               --tn-green: #9ece6a;
               --tn-red: #f7768e;
               --tn-orange: #ff9e64;
+
+              /* Shared geometry so tabs, the sidebar's "+" button, and
+                 other sidebar buttons (e.g. settings) all sit at the same
+                 inline margin and round the same amount. --tn-hover-bg is
+                 kept distinct from --tn-bg-alt: --tn-bg-alt marks
+                 "active/selected/open" state (a selected tab, an open
+                 menu), --tn-hover-bg marks plain mouse-over, so hovering
+                 an unselected tab or button never looks identical to a
+                 selected one. */
+              --tn-row-radius: 4px;
+              --tn-row-margin-inline: 6px;
+              --tn-row-margin-block: 2px;
+              --tn-hover-bg: #202331;
             }
 
             * {
@@ -232,7 +314,10 @@
               max-height: 28px !important;
               height: 28px !important;
               margin: 0 !important;
-              padding: 0 12px 0 16px !important;
+              /* Was 12px/16px (asymmetric) - that's what pushed the tab
+                 icon+label off-center relative to the "+" button below,
+                 which is centered. Symmetric padding fixes that. */
+              padding-inline: 10px !important;
               align-items: center !important;
               box-shadow: none !important;
             }
@@ -253,10 +338,10 @@
             }
 
             .tab-background {
-              margin: 2px 6px !important;
+              margin: var(--tn-row-margin-block) var(--tn-row-margin-inline) !important;
               padding: 0 !important;
               border: none !important;
-              border-radius: 4px !important;
+              border-radius: var(--tn-row-radius) !important;
               box-shadow: none !important;
               background: transparent !important;
             }
@@ -270,7 +355,7 @@
             }
 
             .tabbrowser-tab:not([selected="true"]):hover .tab-background {
-              background: #202331 !important;
+              background: var(--tn-hover-bg) !important;
             }
 
             .tabbrowser-tab:not([selected="true"]):hover .tab-label {
@@ -291,13 +376,18 @@
               margin-inline-end: 10px !important;
             }
 
+            /* Same margin/radius as .tab-background above, so the "+"
+               button's edges line up with the tab pills in the column
+               above it instead of floating at the toolbarbutton default. */
             #vertical-tabs-newtab-button {
+              margin: var(--tn-row-margin-block) var(--tn-row-margin-inline) !important;
+              border-radius: var(--tn-row-radius) !important;
               color: var(--tn-comment) !important;
             }
 
             #vertical-tabs-newtab-button:hover {
               color: var(--tn-blue) !important;
-              background: var(--tn-bg-alt) !important;
+              background: var(--tn-hover-bg) !important;
             }
 
             #sidebar-box {
@@ -321,13 +411,24 @@
               font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace !important;
             }
 
+            /* Every other sidebar button (settings gear, history, etc.)
+               gets the same margin/radius/hover treatment as the "+"
+               button and the tabs above, so the whole column reads as one
+               consistent set instead of the "+" button looking like the
+               odd one out. */
+            #sidebar-box toolbarbutton,
+            #sidebar toolbarbutton {
+              margin: var(--tn-row-margin-block) var(--tn-row-margin-inline) !important;
+              border-radius: var(--tn-row-radius) !important;
+            }
+
             toolbarbutton {
               color: var(--tn-fg-secondary) !important;
             }
 
             toolbarbutton:hover {
               color: var(--tn-blue) !important;
-              background: var(--tn-bg-alt) !important;
+              background: var(--tn-hover-bg) !important;
             }
 
             toolbarbutton[open="true"] {

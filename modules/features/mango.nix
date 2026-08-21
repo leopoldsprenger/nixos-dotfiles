@@ -52,6 +52,7 @@
       bind=SUPER+SHIFT,E,quit
       bind=Super,Space,spawn,${lib.getExe noctalia} msg panel-toggle launcher
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
+      bind=SUPER,E,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- yazi
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right

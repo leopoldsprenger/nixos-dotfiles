@@ -9,7 +9,6 @@
 
 ### After
 
-[ ] configure helium and delete firefox
 [ ] get rid of unnecessary comments
 [ ] install thunar
 [ ] add clipboard manager
@@ -34,6 +33,7 @@
 [ ] fully delete alacritty off my system
 [ ] add a calendar, rice obsidian and find a todo app
 [ ] install thunderbird and declaratively set up email providers
+[ ] fix firefox padding, red text and conforming page themes
 
 ## Done
 
