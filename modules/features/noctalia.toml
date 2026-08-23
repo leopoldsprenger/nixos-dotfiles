@@ -1,10 +1,13 @@
 [bar]
-order = [ "default", "bar" ]
+order = [ "bar", "default" ]
 
     [bar.bar]
     center = [ "ram", "cpu" ]
     enabled = true
     end = [ "media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery" ]
+    font_family = "JetBrainsMono NF"
+    margin_edge = 2
+    padding = 5
     start = [ "clock", "workspaces" ]
 
     [bar.default]
@@ -51,6 +54,14 @@ widget_order = [ "lockscreen-login-box@Virtual-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[plugin_settings."noctalia/wallhaven"]
+browser_placement = "floating"
+browser_position = "center"
+download_dir = "/home/leo/dotfiles/resources/wallpapers"
+
+[plugins]
+enabled = [ "noctalia/wallhaven" ]
+
 [shell]
 avatar_path = "/home/leo/dotfiles/resources/profile-pictures/cat-white.jpg"
 font_family = "JetBrainsMono NF"
@@ -76,7 +87,10 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/mountain-dark.png"
+    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/mountain-dark.png"
+    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
+
+    [wallpaper.monitors.Virtual-1]
+    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"

@@ -2,12 +2,7 @@
 
 ### Immediate
 
-[ ] properly configure mango border color and transparency and glaze
-    [ ] copy this user: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
-    [ ] once I have the glazed windows, I can remove the special firefox rule for opacity in 
 [ ] rice noctalia properly
-    [ ] copy this guy again: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
-    [ ] but change colors to tokyo night (moon if possible) and replace starship icon (the one that launches the workspace overview in mango) with a nixOS icon that does the same
 
 [ ] set up coding environment the nix way
 [ ] create a common host
@@ -17,8 +12,8 @@
 ### After
 
 [ ] theme my nixOS around noctalia
-    [ ] kitty
-    [ ] mango
+    [X] kitty
+    [X] mango
     [ ] gtk
     [ ] btop
     [ ] qt
@@ -65,3 +60,4 @@
 [X] automatically create a projects folder with subdirs if not present
 [X] fix eza not accepting 'ls dir' syntax
 [X] add mkproj and projects scripts
+[X] properly configure mango border color and transparency and glaze

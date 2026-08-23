@@ -28,7 +28,7 @@
       dwindle_manual_split=0
       tagrule=id:*,layout_name:dwindle
 
-      # --- Aesthetics (matches the old niri config) ---
+      # --- Aesthetics & Global Glaze Blur ---
       gappih=6
       gappiv=6
       gappoh=6
@@ -36,12 +36,34 @@
       borderpx=2
       focuscolor=0x74c7ecb3
       bordercolor=0x31324466
-      border_radius=12
+      border_radius=16
+
+      # blur settings
+      blur=1
+      blur_optimized=1
+
+      # MangoWM Äquivalent zu deinem niri blur { } block:
+      blur_params_num_passes=4       # passes 4
+      blur_params_radius=3           # offset 3.0 (Mango nutzt Integer-Radien)
+      blur_params_noise=0.02         # noise 0.02
+      blur_params_saturation=1.5     # saturation 1.5
+
+      # Standard-Deckkraft (Falls keine spezifische Regel greift)
       focused_opacity=0.93
       unfocused_opacity=0.93
 
-      windowrule=focused_opacity:1.0,appid:firefox
-      windowrule=unfocused_opacity:1.0,appid:firefox
+      # --- App-Specific Glaze/Xray Mirror Rules ---
+      # Firefox Picture-in-Picture: Erzwinge Floating
+      windowrule=isfloating:1,appid:firefox,title:^Picture-in-Picture$
+
+      # Volle Deckkraft für Haupt-Browser-Fenster
+      windowrule=focused_opacity:1.0,unfocused_opacity:1.0,appid:firefox
+
+      # Terminals & Editoren (JellyCat-Opacity: 0.75)
+      windowrule=focused_opacity:0.75,unfocused_opacity:0.75,appid:kitty
+
+      # Noctalia UI (JellyCat-Opacity: 0.75 + Floating-Maße)
+      windowrule=isfloating:1,focused_opacity:0.75,unfocused_opacity:0.75,width:1080,height:920,appid:dev\.noctalia\.Noctalia
 
       # --- Startup ---
       exec-once=${lib.getExe noctalia}
@@ -54,6 +76,7 @@
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
       bind=SUPER,E,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- yazi
       bind=SUPER+SHIFT,W,spawn,${lib.getExe noctalia} msg panel-toggle wallpaper
+      bind=SUPER+SHIFT,H,spawn,${lib.getExe noctalia} msg panel-toggle noctalia/wallhaven:browser
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right
@@ -105,8 +128,6 @@
     imports = [inputs.mango.nixosModules.mango];
 
     programs.mango.enable = true;
-
-    # Fixes the D-Bus activation failure system-wide
     programs.dconf.enable = true;
 
     environment.etc."mango/config.conf".source = mangoConfig;
