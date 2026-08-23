@@ -105,15 +105,13 @@
               addons.youtube-shorts-block
               addons.darkreader
               addons.vimium-c
+              addons.pywalfox
             ];
             settings = {
-              # Grants vimium-c's optional "bookmarks" permission at
-              # install time so Firefox never has to prompt for it and
-              # the "index bookmarks" feature just works. addonId is
-              # read straight off the built package rather than
-              # hardcoded, so this stays correct if the extension's id
-              # ever changes.
+              # Native way to inject configuration/permissions straight to the profile
               "${addons.vimium-c.addonId}" = {
+                # Drops the missing installURL logic completely.
+                # Feeds configuration settings directly to the target extension.
                 permissions = [
                   "bookmarks"
                   "clipboardRead"
@@ -131,6 +129,25 @@
             };
           };
         };
+      };
+
+      home.activation = {
+        syncFirefoxTheme = inputs.home-manager.lib.hm.dag.entryAfter ["writeBoundary"] ''
+          NOCTALIA_BIN="${pkgs.noctalia}/bin/noctalia"
+
+          # Ensure the binary is available and executable
+          if [ -x "$NOCTALIA_BIN" ]; then
+
+            # 1. Let Noctalia natively generate and install its messaging manifest
+            $DRY_RUN_CMD "$NOCTALIA_BIN" firefox-theme install
+
+            # 2. Push the theme updates to any running Firefox profiles
+            if pgrep -x "firefox" > /dev/null || pgrep -f ".firefox-wrapped" > /dev/null; then
+              $DRY_RUN_CMD "$NOCTALIA_BIN" firefox-theme update || true
+            fi
+
+          fi
+        '';
       };
     };
   };

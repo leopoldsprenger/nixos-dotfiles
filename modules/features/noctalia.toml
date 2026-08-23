@@ -17,6 +17,9 @@ order = [ "bar", "default" ]
 [desktop_widgets]
 enabled = false
 
+[hooks]
+theme_mode_changed = "pkill -USR1 -f qt6ct || true"
+
 [location]
 address = "Berlin, Germany"
 
@@ -71,10 +74,28 @@ font_family = "JetBrainsMono NF"
     wallpaper_placement = "floating"
     wallpaper_position = "center"
 
+[templates.gtk3]
+input_path = "/usr/share/noctalia/assets/templates/gtk/noctalia.css"
+output_path = "~/.config/gtk-3.0/noctalia.css"
+post_hook = "bash /usr/share/noctalia/assets/templates/gtk/apply.sh dark"
+
+[templates.gtk4]
+input_path = "/usr/share/noctalia/assets/templates/gtk/noctalia.css"
+output_path = "~/.config/gtk-4.0/noctalia.css"
+post_hook = "bash /usr/share/noctalia/assets/templates/gtk/apply.sh dark"
+
 [templates.nvim-base16]
 input_path = "~/.config/nvim/lua/matugen-template.lua"
 output_path = "~/.config/nvim/lua/matugen.lua"
 post_hook = "pkill -SIGUSR1 nvim"
+
+[templates.qt5ct]
+input_path = "~/.config/noctalia/templates/noctalia.colors"
+output_path = "~/.config/qt5ct/colors/noctalia.conf"
+
+[templates.qt6ct]
+input_path = "~/.config/noctalia/templates/noctalia.colors"
+output_path = "~/.config/qt6ct/colors/noctalia.conf"
 
 [theme]
 builtin = "Tokyo-Night"
@@ -84,8 +105,8 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "btop", "kitty", "mango" ]
-    community_ids = [ "neovim", "fastfetch", "bat", "yazi" ]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "mango", "qt" ]
+    community_ids = [ "pywalfox-beta4", "neovim", "fastfetch", "bat", "yazi" ]
 
 [wallpaper]
 directory = "/home/leo/dotfiles/resources/wallpapers"
@@ -94,10 +115,10 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-qrov3l.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-qrov3l.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
 
     [wallpaper.monitors.Virtual-1]
-    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-qrov3l.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
