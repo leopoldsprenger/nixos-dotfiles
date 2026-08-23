@@ -3,25 +3,23 @@
     home-manager.users.leo.programs.kitty = {
       enable = true;
 
-      themeFile = "tokyo_night_moon";
-
       settings = {
-        # Fonts
-        font_family = "JetBrains Mono";
+        # fonts
+        font_family = "jetbrains mono";
         bold_font = "auto";
         italic_font = "auto";
         bold_italic_font = "auto";
         font_size = "11.0";
         line_height = "1.3";
 
-        # Cursor
+        # cursor (Noctalia will overwrite these colors)
         cursor = "#81a1c1";
         cursor_text_color = "#1e1e30";
         cursor_shape = "block";
         cursor_beam_thickness = "1.5";
         cursor_blink_interval = "0.5";
 
-        # Window and tab appearance
+        # window and tab appearance (Noctalia will overwrite these colors)
         window_padding_width = 10;
         window_margin_width = 0;
         tab_bar_edge = "bottom";
@@ -34,17 +32,21 @@
         tab_title_template = "{index}:{title}";
         hide_window_decorations = "yes";
 
-        # Performance
+        # performance
         sync_to_monitor = true;
         enable_audio_bell = false;
         visual_bell_duration = "0.1";
 
-        # Advanced
+        # advanced
         allow_hyperlinks = true;
         shell_integration = "enabled";
         clipboard_control = "write-clipboard read-clipboard write-primary read-primary";
         confirm_os_window_close = 0;
       };
+
+      extraConfig = ''
+        include ~/.config/kitty/themes/noctalia.conf
+      '';
     };
   };
 }

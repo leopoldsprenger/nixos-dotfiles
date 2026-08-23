@@ -2,6 +2,13 @@
 
 ### Immediate
 
+[ ] properly configure mango border color and transparency and glaze
+    [ ] copy this user: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
+    [ ] once I have the glazed windows, I can remove the special firefox rule for opacity in 
+[ ] rice noctalia properly
+    [ ] copy this guy again: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
+    [ ] but change colors to tokyo night (moon if possible) and replace starship icon (the one that launches the workspace overview in mango) with a nixOS icon that does the same
+
 [ ] set up coding environment the nix way
 [ ] create a common host
 [ ] change hostname to macmini-vm
@@ -9,21 +16,26 @@
 
 ### After
 
+[ ] theme my nixOS around noctalia
+    [ ] kitty
+    [ ] mango
+    [ ] gtk
+    [ ] btop
+    [ ] qt
+    [ ] firefox
+    [ ] bat
+    [ ] fastfetch
+    [ ] neovim
+    [ ] yazi
 [ ] get rid of unnecessary comments
 [ ] install thunar
 [ ] add clipboard manager
-[ ] properly configure mango border color and transparency
-    [ ] copy this user: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
-    [ ] once I have the glazed windows, I can remove the special firefox rule
 [ ] change terminal app within noctalia launcher
 
 ### Later
 
 [ ] install and configure tmux
-[ ] rice noctalia properly
-    [ ] copy this guy again: https://codeberg.org/JellyCat/JellyDotFiles/src/branch/main/items
-    [ ] but change colors and replace starship with nixOS icon
-[ ] change border color in mango
+[ ] switch to starship and theme it with noctalia
 [ ] install and set up a proper login screen
 [ ] update install instructions and readme
 [ ] rice gtk and qt applications

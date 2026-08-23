@@ -55,11 +55,25 @@ widget_order = [ "lockscreen-login-box@Virtual-1" ]
 avatar_path = "/home/leo/dotfiles/resources/profile-pictures/cat-white.jpg"
 font_family = "JetBrainsMono NF"
 
+    [shell.panel]
+    wallpaper_placement = "floating"
+    wallpaper_position = "center"
+
 [theme]
 builtin = "Tokyo-Night"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "wallpaper"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "kitty", "mango" ]
 
 [wallpaper]
 directory = "/home/leo/dotfiles/resources/wallpapers"
+
+    [wallpaper.automation]
+    order = "alphabetical"
 
     [wallpaper.default]
     path = "/home/leo/dotfiles/resources/wallpapers/mountain-dark.png"

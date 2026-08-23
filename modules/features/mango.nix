@@ -53,6 +53,7 @@
       bind=Super,Space,spawn,${lib.getExe noctalia} msg panel-toggle launcher
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
       bind=SUPER,E,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- yazi
+      bind=SUPER+SHIFT,W,spawn,${lib.getExe noctalia} msg panel-toggle wallpaper
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right
@@ -96,6 +97,9 @@
       bind=SUPER+SHIFT,7,tag,7
       bind=SUPER+SHIFT,8,tag,8
       bind=SUPER+SHIFT,9,tag,9
+
+      # apply noctalia theme
+      source=~/.config/mango/noctalia.conf
     '';
   in {
     imports = [inputs.mango.nixosModules.mango];
