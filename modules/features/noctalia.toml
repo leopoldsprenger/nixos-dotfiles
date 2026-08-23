@@ -80,7 +80,7 @@ wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "kitty", "mango" ]
-    community_ids = [ "yazi" ]
+    community_ids = [ "neovim", "fastfetch", "bat", "yazi" ]
 
 [wallpaper]
 directory = "/home/leo/dotfiles/resources/wallpapers"

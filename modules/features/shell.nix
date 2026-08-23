@@ -14,7 +14,6 @@
     config = lib.mkIf config.modules.shell.enable {
       environment.systemPackages = with pkgs; [
         eza
-        bat
         fzf
         zsh-fzf-tab
         oh-my-posh
@@ -27,6 +26,14 @@
       programs.zoxide = {
         enable = true;
         enableZshIntegration = true;
+      };
+
+      programs.bat = {
+        enable = true;
+        settings = {
+          theme = "ansi";
+          style = "numbers,changes,header";
+        };
       };
 
       programs.zsh = {

@@ -8,12 +8,12 @@
     [X] kitty
     [X] mango
     [ ] gtk
-    [ ] btop
+    [X] btop
     [ ] qt
     [ ] firefox
-    [ ] bat
-    [ ] fastfetch
-    [ ] neovim
+    [X] bat
+    [X] fastfetch
+    [X] neovim
     [X] yazi
 
 [ ] set up coding environment the nix way
@@ -46,6 +46,8 @@
 [ ] set up shortcuts for power management, network, file search and bluetooth
 [ ] add automatic cleanup to nix generations
 [ ] remove ssh warning during rebuilds
+[ ] change kitty terminal font to jetbrains mono
+[ ] use variable for username in home manager configs
 
 ## Done
 
