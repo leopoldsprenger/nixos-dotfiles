@@ -29,6 +29,7 @@
     [X] yazi
 [ ] add automatic theme update hooks for all programs
 [ ] add glaze over effect to all qt and gtk windows
+[ ] fix neovim colors not indexing red correctly
 
 ### Later
 
@@ -50,6 +51,7 @@
 [ ] change kitty terminal font to jetbrains mono
 [ ] use variable for username in home manager configs
 [ ] change cursor color kitty
+[ ] extract theming from init.nix nvim into own file
 
 ## Done
 
