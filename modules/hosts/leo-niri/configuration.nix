@@ -23,6 +23,8 @@
       self.nixosModules.neovim
       self.nixosModules.shell
       self.nixosModules.terminal-apps
+      self.nixosModules.gtk
+      self.nixosModules.qt
       self.nixosModules.firefox
       self.nixosModules.ensure-project-dirs
       self.nixosModules.project-helpers

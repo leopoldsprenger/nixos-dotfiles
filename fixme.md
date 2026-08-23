@@ -2,20 +2,6 @@
 
 ### Immediate
 
-[ ] rice noctalia properly
-[ ] finally fix firefox theming
-[ ] theme my nixOS around noctalia
-    [X] kitty
-    [X] mango
-    [ ] gtk
-    [X] btop
-    [ ] qt
-    [ ] firefox
-    [X] bat
-    [X] fastfetch
-    [X] neovim
-    [X] yazi
-
 [ ] set up coding environment the nix way
 [ ] create a common host
 [ ] change hostname to macmini-vm
@@ -23,11 +9,26 @@
 
 ### After
 
-[ ] apply glaze to wallpaper windows
+[ ] apply glaze to all noctalia windows, panels and bar
 [ ] get rid of unnecessary comments
 [ ] install thunar
 [ ] add clipboard manager
 [ ] change terminal app within noctalia launcher
+[ ] rice noctalia properly
+[ ] finally fix firefox declarative install
+[ ] theme my nixOS around noctalia
+    [X] kitty
+    [X] mango
+    [X] gtk
+    [X] btop
+    [X] qt
+    [ ] firefox
+    [X] bat
+    [X] fastfetch
+    [X] neovim
+    [X] yazi
+[ ] add automatic theme update hooks for all programs
+[ ] add glaze over effect to all qt and gtk windows
 
 ### Later
 
@@ -48,6 +49,7 @@
 [ ] remove ssh warning during rebuilds
 [ ] change kitty terminal font to jetbrains mono
 [ ] use variable for username in home manager configs
+[ ] change cursor color kitty
 
 ## Done
 
