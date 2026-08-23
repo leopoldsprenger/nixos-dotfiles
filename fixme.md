@@ -3,14 +3,7 @@
 ### Immediate
 
 [ ] rice noctalia properly
-
-[ ] set up coding environment the nix way
-[ ] create a common host
-[ ] change hostname to macmini-vm
-[ ] sync my dotfiles to github
-
-### After
-
+[ ] finally fix firefox theming
 [ ] theme my nixOS around noctalia
     [X] kitty
     [X] mango
@@ -21,7 +14,16 @@
     [ ] bat
     [ ] fastfetch
     [ ] neovim
-    [ ] yazi
+    [X] yazi
+
+[ ] set up coding environment the nix way
+[ ] create a common host
+[ ] change hostname to macmini-vm
+[ ] sync my dotfiles to github
+
+### After
+
+[ ] apply glaze to wallpaper windows
 [ ] get rid of unnecessary comments
 [ ] install thunar
 [ ] add clipboard manager
@@ -41,6 +43,9 @@
 [ ] add a calendar, rice obsidian and find a todo app
 [ ] install thunderbird and declaratively set up email providers
 [ ] fix firefox padding, red text and conforming page themes
+[ ] set up shortcuts for power management, network, file search and bluetooth
+[ ] add automatic cleanup to nix generations
+[ ] remove ssh warning during rebuilds
 
 ## Done
 

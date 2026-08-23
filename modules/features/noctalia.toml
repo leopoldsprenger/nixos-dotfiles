@@ -7,7 +7,8 @@ order = [ "bar", "default" ]
     end = [ "media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery" ]
     font_family = "JetBrainsMono NF"
     margin_edge = 2
-    padding = 5
+    padding = 10
+    radius = 50
     start = [ "clock", "workspaces" ]
 
     [bar.default]
@@ -78,7 +79,8 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "kitty", "mango" ]
+    builtin_ids = [ "btop", "kitty", "mango" ]
+    community_ids = [ "yazi" ]
 
 [wallpaper]
 directory = "/home/leo/dotfiles/resources/wallpapers"

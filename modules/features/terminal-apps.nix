@@ -16,12 +16,18 @@
         programs.yazi = {
           enable = true;
           enableZshIntegration = true;
+          settings = {
+            theme = {
+              flavor = "noctalia";
+            };
+          };
         };
 
         programs.btop = {
           enable = true;
           settings = {
             theme_background = false;
+            color_theme = "/home/leo/.config/btop/themes/noctalia.theme";
           };
         };
       };
