@@ -3,9 +3,6 @@
 ### Immediate
 
 [ ] set up coding environment the nix way
-[ ] create a common host
-[ ] change hostname to macmini-vm
-[ ] sync my dotfiles to github
 
 ### After
 
@@ -23,21 +20,22 @@
 [ ] install and configure tmux
 [ ] switch to starship and theme it with noctalia
 [ ] install and set up a proper login screen
-[ ] update install instructions and readm
-[ ] rice gtk and qt applications
-[ ] install and configure mail program
+[ ] rice my noctalia lock screen and configure a shortcut
+[ ] update install instructions and readme
 [ ] switch mangowm config to proper nix
 [ ] fully delete alacritty off my system
 [ ] add a calendar, rice obsidian and find a todo app
 [ ] install thunderbird and declaratively set up email providers
-[ ] fix firefox padding, red text and conforming page themes
-[ ] set up shortcuts for power management, network, file search and bluetooth
+[ ] fix firefox red text and icons/images
+[ ] set up shortcuts for network, file search and bluetooth
 [ ] add automatic cleanup to nix generations
 [ ] remove ssh warning during rebuilds
 [ ] change kitty terminal font to jetbrains mono
+[ ] use one font variable everywhere
 [ ] use variable for username in home manager configs
 [ ] change cursor color kitty
 [ ] extract theming from init.nix nvim into own file
+[ ] find actually decent, non-placeholder wallpapers
 
 ## Done
 
@@ -71,4 +69,8 @@
     [X] fastfetch
     [X] neovim
     [X] yazi
+[X] rice gtk and qt applications
+[X] sync my dotfiles to github
+[X] create a common host
+[X] change hostname to macmini-vm
 
