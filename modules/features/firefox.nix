@@ -48,6 +48,8 @@
             # --- Hide elements ---
             "browser.toolbars.bookmarks.visibility" = "never";
             "browser.tabs.groups.enabled" = false;
+            "browser.newtabpage.activity-stream.feeds.topsites" = false;
+            "browser.newtabpage.activity-stream.showWeather" = false;
             "browser.uiCustomization.state" = builtins.toJSON {
               placements = {
                 widget-overflow-fixed-list = [];

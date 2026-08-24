@@ -15,19 +15,6 @@
 [ ] add clipboard manager
 [ ] change terminal app within noctalia launcher
 [ ] rice noctalia properly
-[ ] finally fix firefox declarative install
-[ ] theme my nixOS around noctalia
-    [X] kitty
-    [X] mango
-    [X] gtk
-    [X] btop
-    [X] qt
-    [ ] firefox
-    [X] bat
-    [X] fastfetch
-    [X] neovim
-    [X] yazi
-[ ] add automatic theme update hooks for all programs
 [ ] add glaze over effect to all qt and gtk windows
 [ ] fix neovim colors not indexing red correctly
 
@@ -36,10 +23,9 @@
 [ ] install and configure tmux
 [ ] switch to starship and theme it with noctalia
 [ ] install and set up a proper login screen
-[ ] update install instructions and readme
+[ ] update install instructions and readm
 [ ] rice gtk and qt applications
 [ ] install and configure mail program
-[ ] add a theme / wallpaper switcher
 [ ] switch mangowm config to proper nix
 [ ] fully delete alacritty off my system
 [ ] add a calendar, rice obsidian and find a todo app
@@ -72,3 +58,17 @@
 [X] fix eza not accepting 'ls dir' syntax
 [X] add mkproj and projects scripts
 [X] properly configure mango border color and transparency and glaze
+[X] add a theme / wallpaper switcher
+[X] finally fix firefox declarative install
+[X] theme my nixOS around noctalia
+    [X] kitty
+    [X] mango
+    [X] gtk
+    [X] btop
+    [X] qt
+    [X] firefox
+    [X] bat
+    [X] fastfetch
+    [X] neovim
+    [X] yazi
+
