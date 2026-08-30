@@ -3,6 +3,7 @@
 ### Immediate
 
 [ ] set up coding environment the nix way
+[ ] fix ctrl r search and zoxide not working zsh
 
 ### After
 

@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   flake.nixosModules.git = {
     home-manager.users.leo.programs.git = {
       enable = true;
@@ -7,7 +7,16 @@
         user.email = "186564656+leopoldsprenger@users.noreply.github.com";
         init.defaultBranch = "main";
         pull.rebase = true;
+        core = {
+          excludesfile = "~/.config/git/ignore";
+        };
       };
+
+      ignores = [
+        ".direnv/"
+        "result"
+        ".venv/"
+      ];
     };
   };
 }

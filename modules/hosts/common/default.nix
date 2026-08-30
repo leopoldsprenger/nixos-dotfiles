@@ -24,6 +24,7 @@
       self.nixosModules.project-helpers
       self.nixosModules.thunar
       self.nixosModules.cleanup
+      self.nixosModules.development
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];

@@ -75,10 +75,11 @@
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
       bind=SUPER,E,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- yazi
 
-      bind=SUPER+SHIFT,W,spawn,${lib.getExe noctalia} msg panel-toggle wallpaper
-      bind=SUPER+SHIFT,H,spawn,${lib.getExe noctalia} msg panel-toggle noctalia/wallhaven:browser
+      bind=SUPER,M,spawn,${lib.getExe noctalia} msg panel-toggle wallpaper
+      bind=SUPER+SHIFT,M,spawn,${lib.getExe noctalia} msg panel-toggle noctalia/wallhaven:browser
       bind=SUPER,comma,spawn,${lib.getExe noctalia} msg settings-open
       bind=SUPER,P,spawn,${lib.getExe noctalia} msg panel-toggle session
+      bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right
