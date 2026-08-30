@@ -8,7 +8,6 @@
 
 [ ] apply glaze to all noctalia windows, panels and bar
 [ ] get rid of unnecessary comments
-[ ] install thunar
 [ ] add clipboard manager
 [ ] change terminal app within noctalia launcher
 [ ] rice noctalia properly
@@ -28,14 +27,12 @@
 [ ] install thunderbird and declaratively set up email providers
 [ ] fix firefox red text and icons/images
 [ ] set up shortcuts for network, file search and bluetooth
-[ ] add automatic cleanup to nix generations
 [ ] remove ssh warning during rebuilds
 [ ] change kitty terminal font to jetbrains mono
 [ ] use one font variable everywhere
 [ ] use variable for username in home manager configs
 [ ] change cursor color kitty
 [ ] extract theming from init.nix nvim into own file
-[ ] find actually decent, non-placeholder wallpapers
 
 ## Done
 
@@ -73,4 +70,6 @@
 [X] sync my dotfiles to github
 [X] create a common host
 [X] change hostname to macmini-vm
-
+[X] install thunar
+[X] find actually decent, non-placeholder wallpapers
+[X] add automatic cleanup to nix generations
