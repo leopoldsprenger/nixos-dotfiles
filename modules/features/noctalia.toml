@@ -1,15 +1,31 @@
+config_version = 12
+
 [bar]
 order = [ "bar", "default" ]
 
     [bar.bar]
-    center = [ "ram", "cpu" ]
+    background_opacity = 0.79999998211860657
+    center = [ "clock", "spacer_2", "ram", "cpu" ]
     enabled = true
-    end = [ "media", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery" ]
+    end = [
+        "media",
+        "tray",
+        "spacer_3",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "spacer_4",
+        "notifications"
+    ]
     font_family = "JetBrainsMono NF"
-    margin_edge = 2
-    padding = 10
+    margin_edge = 5
+    margin_ends = 300
+    padding = 20
     radius = 50
-    start = [ "clock", "workspaces" ]
+    start = [ "custom_button_2", "workspaces" ]
+    widget_spacing = 10
 
     [bar.default]
     enabled = false
@@ -58,6 +74,11 @@ widget_order = [ "lockscreen-login-box@Virtual-1" ]
         show_unlock_hint = true
         show_weather = true
 
+[plugin_settings."nightwatch75/todo"]
+panel_open_near_click = false
+panel_placement = "floating"
+panel_position = "center"
+
 [plugin_settings."noctalia/wallhaven"]
 browser_placement = "floating"
 browser_position = "center"
@@ -71,6 +92,7 @@ avatar_path = "/home/leo/dotfiles/resources/profile-pictures/cat-white.jpg"
 font_family = "JetBrainsMono NF"
 
     [shell.panel]
+    transparency_mode = "soft"
     wallpaper_placement = "floating"
     wallpaper_position = "center"
 
@@ -115,10 +137,37 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
 
     [wallpaper.monitors.Virtual-1]
-    path = "/home/leo/dotfiles/resources/wallpapers/wallhaven-3q28qy.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
+
+[widget.custom_button_2]
+custom_image = "/home/leo/dotfiles/resources/nixos-icon.png"
+custom_image_colorize = true
+icon_color = "primary"
+interactive = false
+scale = 1.25
+type = "custom_button"
+
+[widget.spacer_2]
+type = "spacer"
+
+[widget.spacer_3]
+type = "spacer"
+
+[widget.spacer_4]
+type = "spacer"
+
+[widget.workspaces]
+active_pill_size = 1.0
+capsule_opacity = 0.5
+capsule_radius = "auto"
+empty_color = "outline"
+hide_when_empty = true
+label_source = "id"
+pill_scale = 0.80000000000000004
+style = "minimal"

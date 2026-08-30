@@ -2,14 +2,12 @@
 
 ### Immediate
 
-[ ] set up coding environment the nix way
 [ ] fix ctrl r search and zoxide not working zsh
 
 ### After
 
 [ ] apply glaze to all noctalia windows, panels and bar
 [ ] get rid of unnecessary comments
-[ ] add clipboard manager
 [ ] change terminal app within noctalia launcher
 [ ] rice noctalia properly
 [ ] add glaze over effect to all qt and gtk windows
@@ -74,3 +72,5 @@
 [X] install thunar
 [X] find actually decent, non-placeholder wallpapers
 [X] add automatic cleanup to nix generations
+[X] set up coding environment the nix way
+[X] add clipboard manager

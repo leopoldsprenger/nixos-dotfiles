@@ -103,7 +103,7 @@
       bind=SUPER+SHIFT,S,setlayout,scroller
       bind=SUPER,N,switch_layout
 
-      # --- Tag / Workspace Keybinds ---
+      # --- Tag / Workspace Keybinds (5 Persistent Workspaces) ---
       bind=SUPER,1,view,1
       bind=SUPER,2,view,2
       bind=SUPER,3,view,3
@@ -126,6 +126,7 @@
 
       # apply noctalia theme
       source=~/.config/mango/noctalia.conf
+
     '';
   in {
     imports = [inputs.mango.nixosModules.mango];
