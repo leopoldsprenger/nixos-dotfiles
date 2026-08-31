@@ -38,6 +38,10 @@
       bordercolor=0x31324466
       border_radius=16
 
+      # hide cursor
+      cursor_hide_timeout=3
+      cursor_hide_on_keypress=1
+
       # blur settings
       blur=1
       blur_optimized=1
@@ -66,7 +70,8 @@
       windowrule=isfloating:1,focused_opacity:0.75,unfocused_opacity:0.75,width:1080,height:920,appid:dev\.noctalia\.Noctalia
 
       # --- Startup ---
-      exec-once=${lib.getExe noctalia}
+      exec-once = ${lib.getExe noctalia}
+      exec-once = bash -c "sleep 0.5 && ${lib.getExe noctalia} msg session lock"
 
       # --- Keybinds ---
       bind=SUPER,Q,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty}
@@ -80,24 +85,17 @@
       bind=SUPER,comma,spawn,${lib.getExe noctalia} msg settings-open
       bind=SUPER,P,spawn,${lib.getExe noctalia} msg panel-toggle session
       bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
+      bind=SUPER,L,spawn,${lib.getExe noctalia} msg session lock
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right
       bind=SUPER,Up,focusdir,up
       bind=SUPER,Down,focusdir,down
-      bind=SUPER,H,focusdir,left
-      bind=SUPER,L,focusdir,right
-      bind=SUPER,K,focusdir,up
-      bind=SUPER,J,focusdir,down
 
       bind=SUPER+SHIFT,Left,exchange_client,left
       bind=SUPER+SHIFT,Right,exchange_client,right
       bind=SUPER+SHIFT,Up,exchange_client,up
       bind=SUPER+SHIFT,Down,exchange_client,down
-      bind=SUPER+SHIFT,H,exchange_client,left
-      bind=SUPER+SHIFT,L,exchange_client,right
-      bind=SUPER+SHIFT,K,exchange_client,up
-      bind=SUPER+SHIFT,J,exchange_client,down
 
       bind=SUPER+SHIFT,T,setlayout,dwindle
       bind=SUPER+SHIFT,S,setlayout,scroller

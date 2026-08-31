@@ -2,19 +2,18 @@
 
 ### Immediate
 
-[ ] fix ctrl r search and zoxide not working zsh
+[ ] fix wrong hostname
 
 ### After
 
-[ ] apply glaze to all noctalia windows, panels and bar
 [ ] get rid of unnecessary comments
 [ ] change terminal app within noctalia launcher
-[ ] rice noctalia properly
 [ ] add glaze over effect to all qt and gtk windows
 [ ] fix neovim colors not indexing red correctly
 
 ### Later
 
+[ ] switch from zsh to fish
 [ ] install and configure tmux
 [ ] switch to starship and theme it with noctalia
 [ ] install and set up a proper login screen
@@ -32,6 +31,7 @@
 [ ] use variable for username in home manager configs
 [ ] change cursor color kitty
 [ ] extract theming from init.nix nvim into own file
+[ ] enable hardware acceleration again where possible but only disable for vms
 
 ## Done
 
@@ -74,3 +74,6 @@
 [X] add automatic cleanup to nix generations
 [X] set up coding environment the nix way
 [X] add clipboard manager
+[X] add fading cursor
+[X] apply glaze to all noctalia windows, panels and bar
+[X] rice noctalia properly
