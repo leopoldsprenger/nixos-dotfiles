@@ -180,6 +180,10 @@ interactive = false
 scale = 1.25
 type = "custom_button"
 
+[widget.media]
+album_art_only = true
+hide_when_no_media = true
+
 [widget.spacer_2]
 type = "spacer"
 

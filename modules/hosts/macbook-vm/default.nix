@@ -19,9 +19,9 @@
   };
 in {
   flake = {
-    nixosModules.macmini-vm = hostModule;
+    nixosModules.macbook-vm = hostModule;
 
-    nixosConfigurations.macmini-vm = inputs.nixpkgs.lib.nixosSystem {
+    nixosConfigurations.macbook-vm = inputs.nixpkgs.lib.nixosSystem {
       modules = [hostModule];
     };
   };
