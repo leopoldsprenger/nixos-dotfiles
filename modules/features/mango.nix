@@ -6,18 +6,13 @@
   flake.nixosModules.mango = {
     pkgs,
     lib,
+    config, # Added config argument here
     ...
   }: let
     noctalia = self.packages.${pkgs.stdenv.hostPlatform.system}.noctaliaConfig;
 
-    # Built once, at eval time, as a real Nix store path — no runtime
-    # file-discovery, no dependency on home-manager activation order.
-    mangoConfig = pkgs.writeText "mango-config.conf" ''
-      # --- Monitor ---
-      # custom:1 forces the exact mode instead of an autodetected
-      # fallback (this is what was giving the wrong resolution/flip).
-      monitorrule=name:Virtual-1,width:3840,height:2160,refresh:60,x:0,y:0,scale:1.8,custom:1,rr:0
-
+    # 1. We store the raw text configuration block in a local variable
+    rawMangoConfigText = ''
       # --- Input ---
       repeat_rate=35
       repeat_delay=200
@@ -124,19 +119,29 @@
 
       # apply noctalia theme
       source=~/.config/mango/noctalia.conf
-
     '';
+
+    # 2. Build the actual store file using our string variable
+    mangoConfig = pkgs.writeText "mango-config.conf" rawMangoConfigText;
   in {
     imports = [inputs.mango.nixosModules.mango];
 
-    programs.mango.enable = true;
-    programs.dconf.enable = true;
+    # 3. Create a custom pipeline to expose our string globally to other modules
+    options.internal.mangoRawConfig = lib.mkOption {
+      type = lib.types.str;
+      default = rawMangoConfigText;
+    };
 
-    environment.etc."mango/config.conf".source = mangoConfig;
+    config = {
+      programs.mango.enable = true;
+      programs.dconf.enable = true;
 
-    home-manager.users.leo = {
-      dconf.enable = true;
-      xdg.configFile."mango/config.conf".source = mangoConfig;
+      environment.etc."mango/config.conf".source = mangoConfig;
+
+      home-manager.users.leo = {
+        dconf.enable = true;
+        xdg.configFile."mango/config.conf".source = mangoConfig;
+      };
     };
   };
 }

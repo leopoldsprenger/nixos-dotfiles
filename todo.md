@@ -32,6 +32,7 @@
 [ ] change cursor color kitty
 [ ] extract theming from init.nix nvim into own file
 [ ] enable hardware acceleration again where possible but only disable for vms
+[ ] enable most system wide hardware only for user scope
 
 ## Done
 

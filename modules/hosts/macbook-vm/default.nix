@@ -6,6 +6,7 @@
   hostModule = {
     imports = [
       self.nixosModules.common
+      self.nixosModules.macbookDisplay
       ./hardware-configuration.nix
     ];
 
