@@ -79,11 +79,36 @@
       bind=SUPER+SHIFT,M,spawn,${lib.getExe noctalia} msg panel-toggle noctalia/wallhaven:browser
       bind=SUPER,comma,spawn,${lib.getExe noctalia} msg settings-open
       bind=SUPER,P,spawn,${lib.getExe noctalia} msg panel-toggle session
-      bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
       bind=SUPER,L,spawn,${lib.getExe noctalia} msg session lock
+
+      bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
       bind=SUPER,F,spawn,${lib.getExe noctalia} msg panel-toggle nightwatch75/file-search:panel
-      bind=SUPER,K,spawn,${lib.getExe noctalia} msg panel-toggle control-center network
-      bind=SUPER,J,spawn,${lib.getExe noctalia} msg panel-toggle control-center bluetooth
+      bind=SUPER,X,spawn,${lib.getExe noctalia} msg panel-toggle control-center network
+      bind=SUPER,Z,spawn,${lib.getExe noctalia} msg panel-toggle control-center bluetooth
+
+      # --- SCREENSHOT BINDINGS ---
+      # Super + Print: Fullscreen Screenshot (via standard annotation tool)
+      bind = SUPER+SHIFT, I, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all annotateFullscreen
+
+      # Print (only): Region Screenshot (via standard region annotation tool)
+      bind = SUPER, I, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all annotate
+
+      # --- SCREEN RECORDING BINDINGS ---
+      # Super + Shift + R: Fullscreen Video Recording Toggle
+      bind = SUPER+SHIFT, R, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all recordFullscreenMp4
+
+      # Super + R: Region Video Recording Toggle
+      bind = SUPER, R, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all recordMp4
+
+      # --- ADVANCED POWER UTILITIES ---
+      # Super + A: Screen Markup Annotation Mode (Full Screen)
+      bind = SUPER, A, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all annotateFullscreen
+
+      # Super + O: Run OCR (Extracts screen text straight to clipboard)
+      bind = SUPER, O, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all ocr
+
+      # Super + Shift + C: Color Picker
+      bind = SUPER+SHIFT, C, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all colorPicker
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right

@@ -13,6 +13,7 @@ order = [ "bar", "default" ]
     center = [ "clock", "spacer_2", "ram", "cpu" ]
     enabled = true
     end = [
+        "widget",
         "media",
         "tray",
         "spacer_3",
@@ -119,6 +120,12 @@ widget_order = [ "lockscreen-login-box@Virtual-1", "lockscreen-widget-0000000000
         clock_style = "digital"
         shadow = true
 
+[plugin_settings."alexander/screen-toolkit"]
+hide-when-unused = true
+record-audio-out = true
+record-skip-confirmation = true
+search-engine-url = "https://duckduckgo.com/?q="
+
 [plugin_settings."nightwatch75/file-search"]
 panel_placement = "floating"
 panel_position = "center"
@@ -134,7 +141,7 @@ browser_position = "center"
 download_dir = "/home/leo/dotfiles/resources/wallpapers"
 
 [plugins]
-enabled = [ "noctalia/wallhaven", "nightwatch75/file-search" ]
+enabled = [ "noctalia/wallhaven", "nightwatch75/file-search", "alexander/screen-toolkit" ]
 
 [shell]
 avatar_path = "/home/leo/dotfiles/resources/profile-pictures/hollow-knight.jpg"
@@ -146,7 +153,7 @@ font_family = "JetBrainsMono NF"
     wallpaper_position = "center"
 
     [shell.screenshot]
-    directory = "/home/leo/pictures/screenshots"
+    directory = "~/Pictures/Screenshots"
 
 [templates.gtk3]
 input_path = "/usr/share/noctalia/assets/templates/gtk/noctalia.css"
@@ -189,13 +196,13 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/blue_white_silver_city_anime.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/blue_white_silver_city_anime.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
 
     [wallpaper.monitors.Virtual-1]
-    path = "/home/leo/dotfiles/resources/wallpapers/blue_white_silver_city_anime.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
 
 [widget.custom_button_2]
 custom_image = "/home/leo/dotfiles/resources/nixos-icon.png"
@@ -220,6 +227,9 @@ type = "spacer"
 
 [widget.spacer_4]
 type = "spacer"
+
+[widget.widget]
+type = "alexander/screen-toolkit:widget"
 
 [widget.workspaces]
 active_pill_size = 1.0
