@@ -82,6 +82,8 @@
       bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
       bind=SUPER,L,spawn,${lib.getExe noctalia} msg session lock
       bind=SUPER,F,spawn,${lib.getExe noctalia} msg panel-toggle nightwatch75/file-search:panel
+      bind=SUPER,K,spawn,${lib.getExe noctalia} msg panel-toggle control-center network
+      bind=SUPER,J,spawn,${lib.getExe noctalia} msg panel-toggle control-center bluetooth
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right

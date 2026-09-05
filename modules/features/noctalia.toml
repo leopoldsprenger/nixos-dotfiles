@@ -36,7 +36,25 @@ order = [ "bar", "default" ]
     enabled = false
 
 [desktop_widgets]
-enabled = false
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000002" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1930.5
+    cy = 1016.0
+    output = "Virtual-1"
+    rotation = 0.0
+    type = "fancy_audio_visualizer"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        background = false
 
 [hooks]
 theme_mode_changed = "pkill -USR1 -f qt6ct || true"
@@ -127,6 +145,9 @@ font_family = "JetBrainsMono NF"
     wallpaper_placement = "floating"
     wallpaper_position = "center"
 
+    [shell.screenshot]
+    directory = "/home/leo/pictures/screenshots"
+
 [templates.gtk3]
 input_path = "/usr/share/noctalia/assets/templates/gtk/noctalia.css"
 output_path = "~/.config/gtk-3.0/noctalia.css"
@@ -168,18 +189,19 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/blue_white_silver_city_anime.jpg"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/blue_white_silver_city_anime.jpg"
 
     [wallpaper.monitors.Virtual-1]
-    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/blue_white_silver_city_anime.jpg"
 
 [widget.custom_button_2]
 custom_image = "/home/leo/dotfiles/resources/nixos-icon.png"
 custom_image_colorize = true
 icon_color = "primary"
+interactive = false
 scale = 1.25
 type = "custom_button"
 

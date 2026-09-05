@@ -27,17 +27,20 @@
 
     home-manager.users.leo.programs.ssh = {
       enable = true;
-      extraConfig = ''
-        Host github.com
-          User git
-          IdentitiesOnly yes
-          IdentityFile ~/.ssh/github_ed25519
+      enableDefaultConfig = false;
 
-        Host gitlab.com gitlab.hpi.de
-          User git
-          IdentitiesOnly yes
-          IdentityFile ~/.ssh/gitlab_ed25519
-      '';
+      matchBlocks = {
+        "github.com" = {
+          user = "git";
+          identitiesOnly = true;
+          identityFile = "~/.ssh/github_ed25519";
+        };
+        "gitlab.com gitlab.hpi.de" = {
+          user = "git";
+          identitiesOnly = true;
+          identityFile = "~/.ssh/gitlab_ed25519";
+        };
+      };
     };
   };
 }

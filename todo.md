@@ -2,7 +2,8 @@
 
 ### Immediate
 
-[ ] remove ssh warning during rebuilds
+[ ] add the ability to screenshot and record (area and fullscreen)
+[ ] install zoom and libre office
 [ ] fix neovim colors not indexing red correctly
 [ ] extract theming from init.nix nvim into own file
 [ ] change terminal app within noctalia launcher
@@ -12,7 +13,6 @@
 ### After
 
 [ ] get rid of unnecessary comments
-[ ] set up shortcuts for network, file search and bluetooth
 [ ] switch from zsh to fish
 [ ] install and configure tmux
 [ ] install thunderbird and declaratively set up email providers
@@ -23,6 +23,7 @@
 
 ### Later
 
+[ ] set up an English, Japanese and German keyboard switcher
 [ ] update install instructions and readme
 [ ] switch mangowm config to proper nix
 [ ] use one font variable everywhere
@@ -79,3 +80,5 @@
 [X] install and set up a proper login screen
 [X] rice my noctalia lock screen and configure a shortcut
 [X] switch to starship and theme it with noctalia
+[X] set up shortcuts for network, file search and bluetooth
+[X] remove ssh warning during rebuilds
