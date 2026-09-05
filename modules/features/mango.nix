@@ -81,6 +81,7 @@
       bind=SUPER,P,spawn,${lib.getExe noctalia} msg panel-toggle session
       bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
       bind=SUPER,L,spawn,${lib.getExe noctalia} msg session lock
+      bind=SUPER,F,spawn,${lib.getExe noctalia} msg panel-toggle nightwatch75/file-search:panel
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right

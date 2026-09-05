@@ -36,6 +36,58 @@
         };
       };
 
+      programs.starship = {
+        enable = true;
+
+        # Standard layout configuration structure with color attributes removed
+        settings = {
+          # Fixes the empty top line / newline issue
+          add_newline = false;
+
+          # Exact layout configuration sequence
+          format = "$directory$git_branch$git_status$character";
+          right_format = "$cmd_duration";
+
+          directory = {
+            truncation_length = 1;
+            fish_style_pwd_dir_length = 0;
+            format = "[$path]($style)";
+          };
+
+          git_branch = {
+            format = " git:\\([$symbol$branch](cyan)\\)";
+            symbol = "";
+          };
+
+          git_status = {
+            format = "([$all_status$ahead_behind]($style))";
+            conflicted = "=";
+            ahead = "⇡";
+            behind = "⇣";
+            diverged = "⇕";
+            untracked = "";
+            stashed = "";
+            modified = "*";
+            staged = "*";
+            renamed = "";
+            deleted = "";
+          };
+
+          character = {
+            success_symbol = "[ ❯](bold green)";
+            error_symbol = "[ ❯](bold red)";
+          };
+
+          continuation_prompt = "[ ❯❯ ](bold green)";
+
+          cmd_duration = {
+            min_time = 5000;
+            format = "[$duration](yellow)";
+          };
+        };
+      };
+
+      # Your Cleaned Zsh Shell Module
       programs.zsh = {
         enable = true;
         enableCompletion = true;
@@ -45,7 +97,7 @@
         shellInit = "zsh-newuser-install() { :; }";
 
         histSize = 5000;
-        histFile = "$HOME/.zsh_history";
+        histFile = "/home/leo/.zsh_history";
 
         shellAliases = {
           ls = "eza --icons=auto --group-directories-first";
@@ -72,74 +124,14 @@
           zstyle ':completion:*' menu no
           zstyle ':fzf-tab:complete:(cd|__zoxide_z):*' fzf-preview 'eza --icons --tree --level=2 $realpath'
 
-          eval "$(${pkgs.oh-my-posh}/bin/oh-my-posh init zsh --config ${pkgs.writeText "ohmyposh.toml" ''
-            version = 4
-            enable_cursor_positioning = true
-            final_space = true
-            console_title_template = '{{ .Shell }} in {{ .Folder }}'
+          # Standard healthy directory workspace mapping for session states
+          export STARSHIP_CACHE="$HOME/.cache/starship"
 
-            [palette]
-              blue = '#82aaff'
-              cyan = '#7dcfff'
-              grey = '#636da6'
-              magenta = '#c099ff'
-              red = '#ff757f'
+          # Native profile invocation path matching Nix configurations
+          export STARSHIP_CONFIG="/etc/xdg/starship.toml"
 
-            [[blocks]]
-              type = 'prompt'
-              alignment = 'left'
-
-              [[blocks.segments]]
-                type = 'path'
-                style = 'plain'
-                background = 'transparent'
-                foreground = 'p:blue'
-                template = '{{ .Folder }}'
-
-                [blocks.segments.properties]
-                  style = 'folder'
-
-              [[blocks.segments]]
-                type = 'git'
-                style = 'plain'
-                foreground = 'p:grey'
-                background = 'transparent'
-                template = ' git:(<p:cyan>{{ .HEAD }}</>){{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }}{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}'
-
-                [blocks.segments.properties]
-                  branch_icon = ""
-                  commit_icon = "@"
-                  fetch_status = true
-
-              [[blocks.segments]]
-                type = 'text'
-                style = 'plain'
-                foreground_templates = [
-                  "{{if gt .Code 0}}p:red{{end}}",
-                  "{{if eq .Code 0}}p:magenta{{end}}",
-                ]
-                background = 'transparent'
-                template = ' >'
-
-            [[blocks]]
-              type = 'rprompt'
-              overflow = 'hidden'
-
-              [[blocks.segments]]
-                type = 'executiontime'
-                style = 'plain'
-                foreground = 'yellow'
-                background = 'transparent'
-                template = '{{ .FormattedMs }}'
-
-                [blocks.segments.properties]
-                  threshold = 5000
-
-            [secondary_prompt]
-              foreground = 'p:magenta'
-              background = 'transparent'
-              template = ' >> '
-          ''})"
+          # Initialize the Starship prompt shell hook natively
+          eval "$(starship init zsh)"
         '';
       };
     };

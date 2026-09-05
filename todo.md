@@ -2,37 +2,34 @@
 
 ### Immediate
 
-[ ] fix wrong hostname
+[ ] remove ssh warning during rebuilds
+[ ] fix neovim colors not indexing red correctly
+[ ] extract theming from init.nix nvim into own file
+[ ] change terminal app within noctalia launcher
+[ ] add glaze over effect to all qt and gtk windows
+[ ] fully delete alacritty off my system
 
 ### After
 
 [ ] get rid of unnecessary comments
-[ ] change terminal app within noctalia launcher
-[ ] add glaze over effect to all qt and gtk windows
-[ ] fix neovim colors not indexing red correctly
+[ ] set up shortcuts for network, file search and bluetooth
+[ ] switch from zsh to fish
+[ ] install and configure tmux
+[ ] install thunderbird and declaratively set up email providers
+[ ] add a calendar, rice obsidian and find a todo app
+[ ] fix firefox red text and icons/images
+[ ] change cursor color kitty
+[ ] change kitty terminal font to jetbrains mono
 
 ### Later
 
-[ ] switch from zsh to fish
-[ ] install and configure tmux
-[ ] switch to starship and theme it with noctalia
-[ ] install and set up a proper login screen
-[ ] rice my noctalia lock screen and configure a shortcut
 [ ] update install instructions and readme
 [ ] switch mangowm config to proper nix
-[ ] fully delete alacritty off my system
-[ ] add a calendar, rice obsidian and find a todo app
-[ ] install thunderbird and declaratively set up email providers
-[ ] fix firefox red text and icons/images
-[ ] set up shortcuts for network, file search and bluetooth
-[ ] remove ssh warning during rebuilds
-[ ] change kitty terminal font to jetbrains mono
 [ ] use one font variable everywhere
 [ ] use variable for username in home manager configs
-[ ] change cursor color kitty
-[ ] extract theming from init.nix nvim into own file
 [ ] enable hardware acceleration again where possible but only disable for vms
-[ ] enable most system wide hardware only for user scope
+[ ] enable most system wide software only for user scope
+[ ] wait for noctalia to fix lock screen widget pixel positioning
 
 ## Done
 
@@ -78,3 +75,7 @@
 [X] add fading cursor
 [X] apply glaze to all noctalia windows, panels and bar
 [X] rice noctalia properly
+[X] fix wrong hostname
+[X] install and set up a proper login screen
+[X] rice my noctalia lock screen and configure a shortcut
+[X] switch to starship and theme it with noctalia

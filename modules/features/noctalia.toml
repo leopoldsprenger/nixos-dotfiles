@@ -101,6 +101,10 @@ widget_order = [ "lockscreen-login-box@Virtual-1", "lockscreen-widget-0000000000
         clock_style = "digital"
         shadow = true
 
+[plugin_settings."nightwatch75/file-search"]
+panel_placement = "floating"
+panel_position = "center"
+
 [plugin_settings."nightwatch75/todo"]
 panel_open_near_click = false
 panel_placement = "floating"
@@ -112,7 +116,7 @@ browser_position = "center"
 download_dir = "/home/leo/dotfiles/resources/wallpapers"
 
 [plugins]
-enabled = [ "noctalia/wallhaven" ]
+enabled = [ "noctalia/wallhaven", "nightwatch75/file-search" ]
 
 [shell]
 avatar_path = "/home/leo/dotfiles/resources/profile-pictures/hollow-knight.jpg"
@@ -154,7 +158,7 @@ source = "wallpaper"
 wallpaper_scheme = "m3-content"
 
     [theme.templates]
-    builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "mango", "qt" ]
+    builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "mango", "qt", "starship" ]
     community_ids = [ "pywalfox-beta4", "neovim", "fastfetch", "bat", "yazi" ]
 
 [wallpaper]
@@ -176,9 +180,11 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
 custom_image = "/home/leo/dotfiles/resources/nixos-icon.png"
 custom_image_colorize = true
 icon_color = "primary"
-interactive = false
 scale = 1.25
 type = "custom_button"
+
+    [widget.custom_button_2.actions]
+    left = "panel-toggle workspaces"
 
 [widget.media]
 album_art_only = true
