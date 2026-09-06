@@ -87,28 +87,8 @@
       bind=SUPER,Z,spawn,${lib.getExe noctalia} msg panel-toggle control-center bluetooth
 
       # --- SCREENSHOT BINDINGS ---
-      # Super + Print: Fullscreen Screenshot (via standard annotation tool)
-      bind = SUPER+SHIFT, I, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all annotateFullscreen
-
-      # Print (only): Region Screenshot (via standard region annotation tool)
-      bind = SUPER, I, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all annotate
-
-      # --- SCREEN RECORDING BINDINGS ---
-      # Super + Shift + R: Fullscreen Video Recording Toggle
-      bind = SUPER+SHIFT, R, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all recordFullscreenMp4
-
-      # Super + R: Region Video Recording Toggle
-      bind = SUPER, R, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all recordMp4
-
-      # --- ADVANCED POWER UTILITIES ---
-      # Super + A: Screen Markup Annotation Mode (Full Screen)
-      bind = SUPER, A, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all annotateFullscreen
-
-      # Super + O: Run OCR (Extracts screen text straight to clipboard)
-      bind = SUPER, O, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all ocr
-
-      # Super + Shift + C: Color Picker
-      bind = SUPER+SHIFT, C, spawn, ${lib.getExe noctalia} msg plugin alexander/screen-toolkit:service all colorPicker
+      bind = SUPER+SHIFT, I, spawn, ${lib.getExe noctalia} msg screenshot-fullscreen
+      bind = SUPER, I, spawn, ${lib.getExe noctalia} msg screenshot-region
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right
