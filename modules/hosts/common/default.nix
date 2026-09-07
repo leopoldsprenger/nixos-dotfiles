@@ -62,10 +62,10 @@
     environment.systemPackages = with pkgs; [
       vim
       nano
-      alacritty
       xwayland-satellite
       zip
       unzip
+      tree
     ];
 
     system.stateVersion = "26.05";

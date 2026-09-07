@@ -3,9 +3,7 @@
 ### Immediate
 
 [ ] install zoom and libre office
-[ ] change terminal app within noctalia launcher
 [ ] add glaze over effect to all qt and gtk windows
-[ ] fully delete alacritty off my system
 
 ### After
 
@@ -84,3 +82,5 @@
 [X] add the ability to screenshot
 [X] fix neovim colors not indexing red correctly
 [X] extract theming from init.nix nvim into own file
+[X] change terminal app within noctalia launcher
+[X] fully delete alacritty off my system
