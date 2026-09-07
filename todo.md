@@ -2,10 +2,7 @@
 
 ### Immediate
 
-[ ] add the ability to screenshot and record (area and fullscreen)
 [ ] install zoom and libre office
-[ ] fix neovim colors not indexing red correctly
-[ ] extract theming from init.nix nvim into own file
 [ ] change terminal app within noctalia launcher
 [ ] add glaze over effect to all qt and gtk windows
 [ ] fully delete alacritty off my system
@@ -20,17 +17,19 @@
 [ ] fix firefox red text and icons/images
 [ ] change cursor color kitty
 [ ] change kitty terminal font to jetbrains mono
+[ ] update install instructions and readme
+[ ] set up an English, Japanese and German keyboard switcher
 
 ### Later
 
-[ ] set up an English, Japanese and German keyboard switcher
-[ ] update install instructions and readme
+[ ] add automatic theme change hooks to every themed part of my setup
 [ ] switch mangowm config to proper nix
 [ ] use one font variable everywhere
 [ ] use variable for username in home manager configs
 [ ] enable hardware acceleration again where possible but only disable for vms
 [ ] enable most system wide software only for user scope
 [ ] wait for noctalia to fix lock screen widget pixel positioning
+[ ] add recording ability (area and fullscreen)
 
 ## Done
 
@@ -82,3 +81,6 @@
 [X] switch to starship and theme it with noctalia
 [X] set up shortcuts for network, file search and bluetooth
 [X] remove ssh warning during rebuilds
+[X] add the ability to screenshot
+[X] fix neovim colors not indexing red correctly
+[X] extract theming from init.nix nvim into own file
