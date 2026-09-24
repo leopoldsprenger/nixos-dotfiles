@@ -9,7 +9,7 @@ tint_intensity = 0.29999999999999999
 order = [ "bar", "default" ]
 
     [bar.bar]
-    background_opacity = 0.79999998211860657
+    background_opacity = 0.96999997831881046
     center = [ "clock", "spacer_2", "ram", "cpu" ]
     enabled = true
     end = [
@@ -26,10 +26,10 @@ order = [ "bar", "default" ]
         "notifications"
     ]
     font_family = "JetBrainsMono NF"
-    margin_edge = 5
-    margin_ends = 300
+    margin_ends = 0
     padding = 20
-    radius = 50
+    panel_overlap = 0
+    radius = 0
     start = [ "custom_button_2", "workspaces" ]
     widget_spacing = 10
 
@@ -88,11 +88,11 @@ widget_order = [ "lockscreen-login-box@Virtual-1", "lockscreen-widget-0000000000
 
         [lockscreen_widgets.widget."lockscreen-login-box@Virtual-1".settings]
         background_color = "surface_variant"
-        background_opacity = 0.80000000000000004
-        background_radius = 32.0
+        background_opacity = 0.95999999999999996
+        background_radius = 10.0
         center_password_text = false
-        input_opacity = 0.80000000000000004
-        input_radius = 32.0
+        input_opacity = 0.95999999999999996
+        input_radius = 5.0
         layout = "compact"
         show_caps_lock = true
         show_keyboard_layout = true
@@ -147,10 +147,13 @@ enabled = [ "noctalia/wallhaven", "nightwatch75/file-search" ]
 
 [shell]
 avatar_path = "/home/leo/dotfiles/resources/profile-pictures/hollow-knight.jpg"
+corner_radius_scale = 0.10000000149011612
 font_family = "JetBrainsMono NF"
 
+    [shell.animation]
+    speed = 2.0000000298023224
+
     [shell.panel]
-    transparency_mode = "soft"
     wallpaper_placement = "floating"
     wallpaper_position = "center"
 

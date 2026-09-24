@@ -28,10 +28,10 @@
       gappiv=6
       gappoh=6
       gappov=6
-      borderpx=2
+      borderpx=1
       focuscolor=0x74c7ecb3
       bordercolor=0x31324466
-      border_radius=16
+      border_radius=1
 
       # hide cursor
       cursor_hide_timeout=3
@@ -42,10 +42,10 @@
       blur_optimized=1
 
       # MangoWM Äquivalent zu deinem niri blur { } block:
-      blur_params_num_passes=4       # passes 4
+      blur_params_num_passes=6       # passes 4
       blur_params_radius=3           # offset 3.0 (Mango nutzt Integer-Radien)
-      blur_params_noise=0.02         # noise 0.02
-      blur_params_saturation=1.5     # saturation 1.5
+      blur_params_noise=0.05         # noise 0.02
+      blur_params_saturation=2     # saturation 1.5
 
       # Standard-Deckkraft (Falls keine spezifische Regel greift)
       focused_opacity=0.93
@@ -124,6 +124,17 @@
       bind=SUPER+SHIFT,7,tag,7
       bind=SUPER+SHIFT,8,tag,8
       bind=SUPER+SHIFT,9,tag,9
+
+      # Enable animations
+      animations=1
+      layer_animations=1
+
+      # Short, snappy durations
+      animation_duration_move=180
+      animation_duration_open=160
+      animation_duration_tag=140
+      animation_duration_close=120
+      animation_duration_focus=100
 
       # apply noctalia theme
       source=~/.config/mango/noctalia.conf
