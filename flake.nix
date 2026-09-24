@@ -36,6 +36,11 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stride-src = {
+      url = "github:leopoldsprenger/stride";
+      flake = false;
+    };
   };
 
   outputs = inputs:

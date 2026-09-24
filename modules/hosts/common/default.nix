@@ -25,6 +25,7 @@
       self.nixosModules.thunar
       self.nixosModules.cleanup
       self.nixosModules.development
+      self.nixosModules.stride
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];

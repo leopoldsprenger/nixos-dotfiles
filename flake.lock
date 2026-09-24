@@ -294,6 +294,7 @@
         "noctalia": "noctalia",
         "nvf": "nvf",
         "sops-nix": "sops-nix",
+        "stride-src": "stride-src",
         "wrapper-modules": "wrapper-modules"
       }
     },
@@ -337,6 +338,22 @@
       "original": {
         "owner": "Mic92",
         "repo": "sops-nix",
+        "type": "github"
+      }
+    },
+    "stride-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1789898513,
+        "narHash": "sha256-biEZ3blXXarawXRaNTa4zvwrRUxAhxGHW8GEiPz3KD4=",
+        "owner": "leopoldsprenger",
+        "repo": "stride",
+        "rev": "f91862ea84719a799793ba17f2472202575f64cd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leopoldsprenger",
+        "repo": "stride",
         "type": "github"
       }
     },

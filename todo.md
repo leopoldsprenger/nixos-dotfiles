@@ -3,7 +3,6 @@
 ### Immediate
 
 [ ] install zoom and libre office
-[ ] add glaze over effect to all qt and gtk windows
 
 ### After
 
