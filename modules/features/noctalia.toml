@@ -31,6 +31,7 @@ order = [ "bar", "default" ]
     panel_overlap = 0
     radius = 0
     start = [ "custom_button_2", "workspaces" ]
+    thickness = 30
     widget_spacing = 10
 
     [bar.default]
@@ -192,7 +193,7 @@ wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "mango", "qt", "starship" ]
-    community_ids = [ "pywalfox-beta4", "neovim", "fastfetch", "bat", "yazi" ]
+    community_ids = [ "pywalfox-beta4", "neovim", "fastfetch", "zathura", "bat", "yazi" ]
 
 [wallpaper]
 directory = "/home/leo/dotfiles/resources/wallpapers"
