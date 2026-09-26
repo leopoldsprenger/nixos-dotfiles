@@ -344,11 +344,11 @@
     "stride-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1789898513,
-        "narHash": "sha256-biEZ3blXXarawXRaNTa4zvwrRUxAhxGHW8GEiPz3KD4=",
+        "lastModified": 1790409130,
+        "narHash": "sha256-YdBn0ZbWJQEQrS30bVYA/qybG6ISYwaV9WOgX0uA9FQ=",
         "owner": "leopoldsprenger",
         "repo": "stride",
-        "rev": "f91862ea84719a799793ba17f2472202575f64cd",
+        "rev": "cbd7dfd1e16a01c90dc8e19b76ee5c65b22b24ec",
         "type": "github"
       },
       "original": {

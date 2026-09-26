@@ -15,6 +15,7 @@
       pkg-config,
       ncurses,
       sqlite,
+      openssl,
       git,
       makeWrapper,
     }:
@@ -26,7 +27,7 @@
         src = inputs.stride-src;
 
         nativeBuildInputs = [cmake pkg-config makeWrapper];
-        buildInputs = [ncurses sqlite];
+        buildInputs = [ncurses sqlite openssl];
 
         # Fügt Git zur Laufzeit der PATH-Umgebung hinzu
         postFixup = ''

@@ -89,9 +89,9 @@ widget_order = [ "lockscreen-login-box@Virtual-1", "lockscreen-widget-0000000000
 
         [lockscreen_widgets.widget."lockscreen-login-box@Virtual-1".settings]
         background_color = "surface_variant"
-        background_opacity = 0.95999999999999996
+        background_opacity = 0.0
         background_radius = 10.0
-        center_password_text = false
+        center_password_text = true
         input_opacity = 0.95999999999999996
         input_radius = 5.0
         layout = "compact"

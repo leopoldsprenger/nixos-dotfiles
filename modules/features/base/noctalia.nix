@@ -14,7 +14,7 @@
 
     home-manager.users.leo = {config, ...}: {
       home.file.".local/state/noctalia/settings.toml".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/features/noctalia.toml";
+        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/features/base/noctalia.toml";
     };
   };
 
