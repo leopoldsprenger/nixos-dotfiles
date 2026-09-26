@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  self,
+  inputs,
+  ...
+}: {
   flake.nixosModules.stride = {
     config,
     lib,
@@ -7,7 +11,7 @@
   }: let
     cfg = config.programs.stride;
 
-    # 1. Das Paket wird inline exakt nach Ihrem Rezept gebaut
+    # 1. Das Paket wird inline exakt nach Ihrem Rezept gebaut (Inklusive OpenSSL)
     stride-package = pkgs.callPackage ({
       lib,
       stdenv,
@@ -29,7 +33,6 @@
         nativeBuildInputs = [cmake pkg-config makeWrapper];
         buildInputs = [ncurses sqlite openssl];
 
-        # Fügt Git zur Laufzeit der PATH-Umgebung hinzu
         postFixup = ''
           wrapProgram "$out/bin/stride" --prefix PATH : "${lib.makeBinPath [git]}"
         '';
@@ -63,6 +66,12 @@
         '';
       };
 
+      mirrorEncryptionKeyFile = lib.mkOption {
+        type = lib.types.nullOr lib.types.path;
+        default = null;
+        description = "Path to the decrypted sops file containing the encryption key.";
+      };
+
       syncInterval = lib.mkOption {
         type = lib.types.str;
         default = "10m";
@@ -79,23 +88,46 @@
       programs.stride = {
         enable = true;
         mirrorRemote = "git@github.com:leopoldsprenger/stride-data.git";
+        mirrorEncryptionKeyFile = config.sops.secrets.stride-data-key.path;
         syncInterval = "10m";
+      };
+
+      # Registriert das sops-Geheimnis mit echtem absolute-path-Typ aus ${self}
+      sops.secrets.stride-data-key = {
+        sopsFile = "${self}/resources/secrets/stride.yaml"; # <-- Remove the \ here
+        key = "mirror_encryption_key";
+        owner = "leo";
       };
 
       # Klinkt sich nahtlos in Home-Manager für alle User ein, wenn enable aktiv ist
       home-manager.sharedModules = lib.mkIf cfg.enable [
         ({
-          config,
+          config, # Das ist die Home-Manager-Konfiguration des Users
           pkgs,
+          lib, # Das innere lib-Argument enthält die Home-Manager-Erweiterungen (lib.hm)
           ...
         }: {
           # Installiert das generierte Paket im User-Profil
           home.packages = [cfg.package];
 
-          # ERZEUGT DIE STRIDE KONFIGURATIONSDATEI (Verhindert den Prompt!)
-          home.file.".local/share/stride/config".text = lib.mkIf (cfg.mirrorRemote != null) ''
-            # Managed by home-manager (programs.stride.mirrorRemote) -- edits here will be overwritten.
+          # ERZEUGT DIE STRIDE KONFIGURATIONSDATEI VIA SCRIPT (Verhindert Nix-Store-Leaks)
+          home.activation.setupStrideConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
+                        mkdir -p "$HOME/.local/share/stride"
+
+                        # Basis-Konfiguration generieren
+                        cat <<EOF > "$HOME/.local/share/stride/config"
+            # Managed by home-manager activation script -- edits here will be overwritten.
             mirror_remote=${cfg.mirrorRemote}
+            EOF
+
+                        # Hängt den geheimen Schlüssel aus dem sops-Verzeichnis sicher an, falls vorhanden
+                        KEY_FILE="${toString cfg.mirrorEncryptionKeyFile}"
+                        if [ -f "$KEY_FILE" ]; then
+                          SECRET_KEY=$(cat "$KEY_FILE")
+                          echo "mirror_encryption_key=$SECRET_KEY" >> "$HOME/.local/share/stride/config"
+                        fi
+
+                        chmod 600 "$HOME/.local/share/stride/config"
           '';
 
           # Erstellt den systemd-Dienst für den automatischen Sync im Hintergrund
@@ -105,11 +137,11 @@
             };
             Service = {
               Type = "oneshot";
-              ExecStart = "${cfg.package}/bin/stride --sync";
+              ExecStart = "\${cfg.package}/bin/stride --sync";
             };
           };
 
-          # Startet den Dienst im definierten Intervall (Korrigierte Syntax)
+          # Startet den Dienst im definierten Intervall
           systemd.user.timers.stride-sync = lib.mkIf pkgs.stdenv.isLinux {
             Unit = {
               Description = "Periodic trigger for stride-sync.service";

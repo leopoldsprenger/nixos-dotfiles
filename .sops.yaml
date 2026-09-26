@@ -31,3 +31,8 @@ creation_rules:
     key_groups:
       - age:
           - *leo_age
+
+  - path_regex: ^resources/secrets/stride\.yaml$
+    key_groups:
+      - age:
+          - *leo_age
