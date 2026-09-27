@@ -26,6 +26,8 @@
       self.nixosModules.cleanup
       self.nixosModules.development
       self.nixosModules.stride
+      self.nixosModules.latex
+      self.nixosModules.zathura
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];

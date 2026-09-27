@@ -1,4 +1,4 @@
-config_version = 12
+config_version = 14
 
 [backdrop]
 blur_intensity = 0.5
@@ -52,6 +52,8 @@ widget_order = [ "desktop-widget-0000000000000002" ]
     cx = 1930.5
     cy = 1016.0
     output = "Virtual-1"
+    placement_height = 1000.0
+    placement_width = 1600.0
     rotation = 0.0
     type = "fancy_audio_visualizer"
 
@@ -84,6 +86,8 @@ widget_order = [ "lockscreen-login-box@Virtual-1", "lockscreen-widget-0000000000
     cx = 1066.5
     cy = 922.0
     output = "Virtual-1"
+    placement_height = 1000.0
+    placement_width = 1600.0
     rotation = 0.0
     type = "login_box"
 
@@ -109,6 +113,8 @@ widget_order = [ "lockscreen-login-box@Virtual-1", "lockscreen-widget-0000000000
     cx = 1066.5
     cy = 240.0
     output = "Virtual-1"
+    placement_height = 1000.0
+    placement_width = 1600.0
     rotation = 0.0
     type = "clock"
 
@@ -155,6 +161,7 @@ font_family = "JetBrainsMono NF"
     speed = 2.0000000298023224
 
     [shell.panel]
+    open_near_click_control_center = true
     wallpaper_placement = "floating"
     wallpaper_position = "center"
 

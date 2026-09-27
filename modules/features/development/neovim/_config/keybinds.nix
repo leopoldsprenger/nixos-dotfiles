@@ -25,6 +25,27 @@
           desc = "Open netrw explorer in current file directory";
         };
 
+        "<leader>ll" = {
+          action = "function() vim.fn['vimtex#compiler#compile']() end";
+          lua = true;
+          silent = true;
+          desc = "VimTeX: Compile currently open file (Single/One-Shot)";
+        };
+
+        "<leader>lv" = {
+          action = "function() vim.fn['vimtex#compiler#start']() end";
+          lua = true;
+          silent = true;
+          desc = "VimTeX: Start continuous compilation and open Zathura";
+        };
+
+        "<leader>lk" = {
+          action = "function() vim.fn['vimtex#compiler#stop']() end";
+          lua = true;
+          silent = true;
+          desc = "VimTeX: Kill active background continuous compilation engine";
+        };
+
         "<leader>e" = {
           action = ''
             function()
@@ -110,4 +131,3 @@
     '';
   };
 }
-
