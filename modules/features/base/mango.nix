@@ -31,7 +31,7 @@
       borderpx=1
       focuscolor=0x74c7ecb3
       bordercolor=0x31324466
-      border_radius=1
+      border_radius=7
 
       # hide cursor
       cursor_hide_timeout=3
@@ -42,7 +42,7 @@
       blur_optimized=1
 
       # MangoWM Äquivalent zu deinem niri blur { } block:
-      blur_params_num_passes=6       # passes 4
+      blur_params_num_passes=4       # passes 4
       blur_params_radius=3           # offset 3.0 (Mango nutzt Integer-Radien)
       blur_params_noise=0.05         # noise 0.02
       blur_params_saturation=2     # saturation 1.5
@@ -64,6 +64,8 @@
       # Noctalia UI (JellyCat-Opacity: 0.75 + Floating-Maße)
       windowrule=isfloating:1,focused_opacity:0.75,unfocused_opacity:0.75,width:1080,height:920,appid:dev\.noctalia\.Noctalia
 
+      windowrule=isfloating:1,appid:^stride-quick-capture$
+
       # --- Startup ---
       exec-once = ${lib.getExe noctalia}
       exec-once = bash -c "sleep 0.5 && ${lib.getExe noctalia} msg session lock"
@@ -75,6 +77,7 @@
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
       bind=SUPER,E,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- yazi
       bind=SUPER,T,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- stride
+      bind=SUPER+SHIFT,T,spawn,stride --quick-capture
 
       bind=SUPER,M,spawn,${lib.getExe noctalia} msg panel-toggle wallpaper
       bind=SUPER+SHIFT,M,spawn,${lib.getExe noctalia} msg panel-toggle noctalia/wallhaven:browser

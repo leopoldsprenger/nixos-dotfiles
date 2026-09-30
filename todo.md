@@ -3,6 +3,7 @@
 ### Immediate
 
 [ ] install zoom and libre office
+[ ] install gui archive manager
 
 ### After
 
