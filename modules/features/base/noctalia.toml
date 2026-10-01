@@ -291,7 +291,7 @@ type = "spacer"
 type = "spacer"
 
 [widget.workspaces]
-active_pill_size = 1.0
+active_pill_size = 1.5
 capsule_opacity = 0.5
 capsule_radius = "auto"
 empty_color = "on_secondary"
