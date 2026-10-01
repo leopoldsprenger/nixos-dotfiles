@@ -9,6 +9,7 @@
       self.nixosModules.fonts
       self.nixosModules.mango
       self.nixosModules.noctalia
+      self.nixosModules.ly
       self.nixosModules.git
       self.nixosModules.ssh
       self.nixosModules.cursor
@@ -47,20 +48,6 @@
     };
 
     security.polkit.enable = true;
-
-    services.greetd = {
-      enable = true;
-      settings = {
-        initial_session = {
-          command = "${config.programs.mango.package}/bin/mango -c /etc/mango/config.conf";
-          user = "leo";
-        };
-        default_session = {
-          command = "${config.programs.mango.package}/bin/mango -c /etc/mango/config.conf";
-          user = "leo";
-        };
-      };
-    };
 
     environment.systemPackages = with pkgs; [
       vim

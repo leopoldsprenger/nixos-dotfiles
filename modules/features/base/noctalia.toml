@@ -16,7 +16,7 @@ order = [ "bar", "default" ]
     capsule_opacity = 0.84999998100101948
     capsule_padding = 12.0
     capsule_thickness = 0.99999998137354851
-    center = [ "spacer_2", "workspaces" ]
+    center = [ "workspaces" ]
     enabled = true
     end = [
         "media",
@@ -27,8 +27,8 @@ order = [ "bar", "default" ]
         "volume",
         "brightness",
         "battery",
-        "spacer_4",
         "clock",
+        "spacer_4",
         "notifications"
     ]
     font_family = "JetBrainsMono NF"
@@ -75,6 +75,7 @@ address = "Berlin, Germany"
 [lockscreen]
 blur_intensity = 0.0
 tint_intensity = 0.0
+transition = []
 
 [lockscreen_widgets]
 enabled = true
@@ -90,7 +91,7 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@Virtual-1", 
     box_height = 70.0
     box_width = 400.0
     cx = 1066.5
-    cy = 922.0
+    cy = 922.00006103515625
     output = "Virtual-1"
     placement_height = 1000.0
     placement_width = 1600.0
@@ -210,7 +211,9 @@ font_family = "JetBrainsMono NF"
     speed = 2.0000000298023224
 
     [shell.panel]
+    control_center_placement = "floating"
     open_near_click_control_center = true
+    transparency_mode = "soft"
     wallpaper_placement = "floating"
     wallpaper_position = "center"
 
@@ -258,13 +261,13 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/dark-blue-wave-mac.jpg"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/dark-blue-wave-mac.jpg"
 
     [wallpaper.monitors.Virtual-1]
-    path = "/home/leo/dotfiles/resources/wallpapers/hollow_knight.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/dark-blue-wave-mac.jpg"
 
 [widget.custom_button_2]
 custom_image = "/home/leo/dotfiles/resources/nixos-icon.png"
@@ -281,9 +284,6 @@ type = "custom_button"
 album_art_only = true
 hide_when_no_media = true
 
-[widget.spacer_2]
-type = "spacer"
-
 [widget.spacer_3]
 type = "spacer"
 
@@ -291,11 +291,11 @@ type = "spacer"
 type = "spacer"
 
 [widget.workspaces]
-active_pill_size = 1.5
+active_pill_size = 1.0
 capsule_opacity = 0.5
 capsule_radius = "auto"
-empty_color = "outline"
-hide_when_empty = true
+empty_color = "on_secondary"
 label_source = "id"
+occupied_color = "on_secondary"
 pill_scale = 0.75
 show_labels = false

@@ -68,7 +68,6 @@
 
       # --- Startup ---
       exec-once = ${lib.getExe noctalia}
-      exec-once = bash -c "sleep 0.5 && ${lib.getExe noctalia} msg session lock"
 
       # --- Keybinds ---
       bind=SUPER,Q,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty}
