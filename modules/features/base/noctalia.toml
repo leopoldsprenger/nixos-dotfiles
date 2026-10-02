@@ -261,13 +261,13 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/dark-blue-wave-mac.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/satellite-kurzgesagt-catpucchin-mocha.png"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/dark-blue-wave-mac.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/satellite-kurzgesagt-catpucchin-mocha.png"
 
     [wallpaper.monitors.Virtual-1]
-    path = "/home/leo/dotfiles/resources/wallpapers/dark-blue-wave-mac.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/satellite-kurzgesagt-catpucchin-mocha.png"
 
 [widget.custom_button_2]
 custom_image = "/home/leo/dotfiles/resources/nixos-icon.png"
