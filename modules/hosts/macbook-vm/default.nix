@@ -7,6 +7,7 @@
     imports = [
       self.nixosModules.common
       self.nixosModules.macbookDisplay
+      self.nixosModules.macbookKeyboard
       ./hardware-configuration.nix
     ];
 

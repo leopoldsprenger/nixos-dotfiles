@@ -6,12 +6,11 @@
   flake.nixosModules.mango = {
     pkgs,
     lib,
-    config, # Added config argument here
+    config,
     ...
   }: let
     noctalia = self.packages.${pkgs.stdenv.hostPlatform.system}.noctaliaConfig;
 
-    # 1. We store the raw text configuration block in a local variable
     rawMangoConfigText = ''
       # --- Input ---
       repeat_rate=35
@@ -33,46 +32,51 @@
       bordercolor=0x31324466
       border_radius=7
 
-      # hide cursor
+      # Hide cursor
       cursor_hide_timeout=3
       cursor_hide_on_keypress=1
 
-      # blur settings
+      # Blur settings
       blur=1
       blur_optimized=1
+      blur_params_num_passes=4
+      blur_params_radius=3
+      blur_params_noise=0.05
+      blur_params_saturation=2
 
-      # MangoWM Äquivalent zu deinem niri blur { } block:
-      blur_params_num_passes=4       # passes 4
-      blur_params_radius=3           # offset 3.0 (Mango nutzt Integer-Radien)
-      blur_params_noise=0.05         # noise 0.02
-      blur_params_saturation=2     # saturation 1.5
-
-      # Standard-Deckkraft (Falls keine spezifische Regel greift)
+      # Standard opacity
       focused_opacity=0.93
       unfocused_opacity=0.93
 
       # --- App-Specific Glaze/Xray Mirror Rules ---
-      # Firefox Picture-in-Picture: Erzwinge Floating
+
+      # Firefox Picture-in-Picture
       windowrule=isfloating:1,appid:firefox,title:^Picture-in-Picture$
 
-      # Volle Deckkraft für Haupt-Browser-Fenster
+      # Firefox main windows
       windowrule=focused_opacity:1.0,unfocused_opacity:1.0,appid:firefox
 
-      # Terminals & Editoren (JellyCat-Opacity: 0.75)
+      # Terminals & editors
       windowrule=focused_opacity:0.75,unfocused_opacity:0.75,appid:kitty
 
-      # Noctalia UI (JellyCat-Opacity: 0.75 + Floating-Maße)
+      # Noctalia UI
       windowrule=isfloating:1,focused_opacity:0.75,unfocused_opacity:0.75,width:1080,height:920,appid:dev\.noctalia\.Noctalia
 
       windowrule=isfloating:1,appid:^stride-quick-capture$
 
       # --- Startup ---
-      exec-once = ${lib.getExe noctalia}
+
+      # Noctalia is started by Mango.
+      exec-once=${lib.getExe noctalia}
+
+      # Fcitx5 is started by the NixOS input-method module.
+      # Do not start pkgs.fcitx5 manually here.
 
       # --- Keybinds ---
+
       bind=SUPER,Q,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty}
       bind=SUPER,W,killclient
-      bind=Super,Space,spawn,${lib.getExe noctalia} msg panel-toggle launcher
+      bind=SUPER,Space,spawn,${lib.getExe noctalia} msg panel-toggle launcher
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
       bind=SUPER,E,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- yazi
       bind=SUPER,T,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- stride
@@ -90,9 +94,26 @@
       bind=SUPER,Z,spawn,${lib.getExe noctalia} msg panel-toggle control-center bluetooth
       bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle control-center calendar
 
-      # --- SCREENSHOT BINDINGS ---
-      bind = SUPER+SHIFT, R, spawn, ${lib.getExe noctalia} msg screenshot-fullscreen
-      bind = SUPER, R, spawn, ${lib.getExe noctalia} msg screenshot-region
+      # --- Keyboard Layout / Input Method ---
+      #
+      # Super+Shift+I:
+      #
+      #   English QWERTY
+      #       ↓
+      #   German QWERTZ
+      #       ↓
+      #   Japanese / Mozc
+      #       ↓
+      #   English QWERTY
+      #
+      bind=SUPER+SHIFT,I,spawn,/run/current-system/sw/bin/fcitx5-cycle-layouts
+
+      # --- Screenshots ---
+
+      bind=SUPER+SHIFT,R,spawn,${lib.getExe noctalia} msg screenshot-fullscreen
+      bind=SUPER,R,spawn,${lib.getExe noctalia} msg screenshot-region
+
+      # --- Window Navigation ---
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right
@@ -104,11 +125,14 @@
       bind=SUPER+SHIFT,Up,exchange_client,up
       bind=SUPER+SHIFT,Down,exchange_client,down
 
+      # --- Layouts ---
+
       bind=SUPER+SHIFT,T,setlayout,dwindle
       bind=SUPER+SHIFT,S,setlayout,scroller
       bind=SUPER,N,switch_layout
 
-      # --- Tag / Workspace Keybinds (5 Persistent Workspaces) ---
+      # --- Tag / Workspace Keybinds ---
+
       tag_num=5
 
       bind=SUPER,1,view,1
@@ -123,40 +147,50 @@
       bind=SUPER+SHIFT,4,tag,4
       bind=SUPER+SHIFT,5,tag,5
 
-      # Enable animations
+      # --- Animations ---
+
       animations=1
       layer_animations=1
 
-      # Short, snappy durations
       animation_duration_move=180
       animation_duration_open=160
       animation_duration_tag=140
       animation_duration_close=120
       animation_duration_focus=100
 
-      # apply noctalia theme
+      # --- Noctalia Theme ---
+
       source=~/.config/mango/noctalia.conf
     '';
 
-    # 2. Build the actual store file using our string variable
     mangoConfig = pkgs.writeText "mango-config.conf" rawMangoConfigText;
   in {
-    imports = [inputs.mango.nixosModules.mango];
+    imports = [
+      inputs.mango.nixosModules.mango
+    ];
 
-    # 3. Create a custom pipeline to expose our string globally to other modules
+    # Expose the raw configuration to other modules.
+    #
+    # display.nix currently consumes this as:
+    #   config.internal.mangoRawConfig
+    #
     options.internal.mangoRawConfig = lib.mkOption {
       type = lib.types.str;
       default = rawMangoConfigText;
+      description = "Raw MangoWM configuration shared with other modules.";
     };
 
     config = {
       programs.mango.enable = true;
       programs.dconf.enable = true;
 
+      # System-level Mango configuration.
       environment.etc."mango/config.conf".source = mangoConfig;
 
+      # Home Manager Mango configuration.
       home-manager.users.leo = {
         dconf.enable = true;
+
         xdg.configFile."mango/config.conf".source = mangoConfig;
       };
     };

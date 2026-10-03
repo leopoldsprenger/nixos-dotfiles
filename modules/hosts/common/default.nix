@@ -7,6 +7,7 @@
     imports = [
       self.nixosModules.home-manager
       self.nixosModules.fonts
+      self.nixosModules.keyboard
       self.nixosModules.mango
       self.nixosModules.noctalia
       self.nixosModules.ly
@@ -36,7 +37,6 @@
 
     time.timeZone = "Europe/Berlin";
     i18n.defaultLocale = "en_US.UTF-8";
-    console.keyMap = "us";
 
     zramSwap.enable = true;
 
