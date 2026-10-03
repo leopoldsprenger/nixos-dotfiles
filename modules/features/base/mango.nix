@@ -84,14 +84,15 @@
       bind=SUPER,P,spawn,${lib.getExe noctalia} msg panel-toggle session
       bind=SUPER,L,spawn,${lib.getExe noctalia} msg session lock
 
-      bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
+      bind=SUPER+SHIFT,C,spawn,${lib.getExe noctalia} msg panel-toggle clipboard
       bind=SUPER,F,spawn,${lib.getExe noctalia} msg panel-toggle nightwatch75/file-search:panel
       bind=SUPER,X,spawn,${lib.getExe noctalia} msg panel-toggle control-center network
       bind=SUPER,Z,spawn,${lib.getExe noctalia} msg panel-toggle control-center bluetooth
+      bind=SUPER,C,spawn,${lib.getExe noctalia} msg panel-toggle control-center calendar
 
       # --- SCREENSHOT BINDINGS ---
-      bind = SUPER+SHIFT, I, spawn, ${lib.getExe noctalia} msg screenshot-fullscreen
-      bind = SUPER, I, spawn, ${lib.getExe noctalia} msg screenshot-region
+      bind = SUPER+SHIFT, R, spawn, ${lib.getExe noctalia} msg screenshot-fullscreen
+      bind = SUPER, R, spawn, ${lib.getExe noctalia} msg screenshot-region
 
       bind=SUPER,Left,focusdir,left
       bind=SUPER,Right,focusdir,right

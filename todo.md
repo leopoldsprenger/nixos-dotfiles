@@ -2,21 +2,18 @@
 
 ### Immediate
 
-[ ] install zoom and libre office
-[ ] install gui archive manager
+[ ] set up an English, Japanese and German keyboard switcher
+[ ] install and configure tmux
+[ ] install thunderbird and declaratively set up email providers
 
 ### After
 
 [ ] get rid of unnecessary comments
-[ ] switch from zsh to fish
-[ ] install and configure tmux
-[ ] install thunderbird and declaratively set up email providers
 [ ] add a calendar, rice obsidian and find a todo app
 [ ] fix firefox red text and icons/images
 [ ] change cursor color kitty
 [ ] change kitty terminal font to jetbrains mono
 [ ] update install instructions and readme
-[ ] set up an English, Japanese and German keyboard switcher
 
 ### Later
 
