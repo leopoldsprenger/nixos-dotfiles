@@ -10,7 +10,7 @@
       self.nixosModules.keyboard
       self.nixosModules.mango
       self.nixosModules.noctalia
-      self.nixosModules.ly
+      self.nixosModules.display-manager
       self.nixosModules.git
       self.nixosModules.ssh
       self.nixosModules.cursor

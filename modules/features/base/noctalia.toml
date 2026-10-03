@@ -260,13 +260,13 @@ directory = "/home/leo/dotfiles/resources/wallpapers"
     order = "alphabetical"
 
     [wallpaper.default]
-    path = "/home/leo/dotfiles/resources/wallpapers/red-tori-gate-sunset.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/green-blue-teal-bridge.jpg"
 
     [wallpaper.last]
-    path = "/home/leo/dotfiles/resources/wallpapers/red-tori-gate-sunset.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/green-blue-teal-bridge.jpg"
 
     [wallpaper.monitors.Virtual-1]
-    path = "/home/leo/dotfiles/resources/wallpapers/red-tori-gate-sunset.jpg"
+    path = "/home/leo/dotfiles/resources/wallpapers/green-blue-teal-bridge.jpg"
 
 [widget.custom_button_2]
 custom_image = "/home/leo/dotfiles/resources/nixos-icon.png"

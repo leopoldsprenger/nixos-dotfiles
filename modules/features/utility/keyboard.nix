@@ -19,6 +19,13 @@
       esac
     '';
   in {
+    services.xserver.xkb = {
+      layout = "us";
+      variant = "";
+    };
+
+    console.keyMap = "us";
+
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
