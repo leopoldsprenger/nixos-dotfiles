@@ -2,7 +2,8 @@
 
 ### Immediate
 
-[ ] set up an English, Japanese and German keyboard switcher
+[ ] fix english/german default keyboard layout
+[ ] disable keyboard layout in noctalia bar
 [ ] install and configure tmux
 [ ] install thunderbird and declaratively set up email providers
 
@@ -81,3 +82,4 @@
 [X] extract theming from init.nix nvim into own file
 [X] change terminal app within noctalia launcher
 [X] fully delete alacritty off my system
+[X] set up an English, Japanese and German keyboard switcher

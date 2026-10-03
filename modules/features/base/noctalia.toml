@@ -20,7 +20,6 @@ order = [ "bar", "default" ]
     enabled = true
     end = [
         "media",
-        "tray",
         "spacer_3",
         "network",
         "bluetooth",

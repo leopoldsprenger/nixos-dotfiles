@@ -119,7 +119,7 @@
             chmod 600 "$HOME/.local/share/stride/config"
           '';
 
-          systemd.user.services.stride-sync = lib.mkIf (pkgs.stdenv.isLinux && cfg.enableSyncTimer) {
+          systemd.user.services.stride-sync = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux && cfg.enableSyncTimer) {
             Unit.Description = "Sync Stride's data to its git mirror";
             Service = {
               Type = "oneshot";
@@ -127,7 +127,7 @@
             };
           };
 
-          systemd.user.timers.stride-sync = lib.mkIf (pkgs.stdenv.isLinux && cfg.enableSyncTimer) {
+          systemd.user.timers.stride-sync = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux && cfg.enableSyncTimer) {
             Unit.Description = "Periodic trigger for stride-sync.service";
             Timer = {
               OnStartupSec = "2m";
