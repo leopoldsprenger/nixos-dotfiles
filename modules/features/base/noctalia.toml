@@ -1,5 +1,3 @@
-config_version = 14
-
 [backdrop]
 blur_intensity = 0.5
 enabled = true
@@ -251,7 +249,12 @@ wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "mango", "qt", "starship" ]
-    community_ids = [ "pywalfox-beta4", "neovim", "fastfetch", "zathura", "bat", "yazi" ]
+    community_ids = [ "pywalfox-beta4", "neovim", "obsidian", "fastfetch", "zathura", "bat", "yazi" ]
+
+        [theme.templates.user.papirus-icons]
+        input_path = "templates/papirus-icons/colors"
+        output_path = "templates/papirus-icons/colors-final"
+        post_hook = "bash '{{ config_dir }}/templates/papirus-icons/apply.sh'"
 
 [wallpaper]
 directory = "/home/leo/dotfiles/resources/wallpapers"
