@@ -9,12 +9,15 @@
     networking.networkmanager.enable = true;
 
     environment.systemPackages = [
-      self.packages.${pkgs.stdenv.hostPlatform.system}.noctaliaConfig
+      (inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+        inherit pkgs;
+        package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
+        settings = builtins.fromTOML (builtins.readFile ./noctalia.toml);
+      })
     ];
 
-    home-manager.users.leo = {config, ...}: {
-      home.file.".local/state/noctalia/settings.toml".source =
-        config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/modules/features/base/noctalia.toml";
+    home-manager.users.leo = {...}: {
+      xdg.configFile."noctalia/settings.toml".source = ./noctalia.toml;
     };
   };
 
@@ -23,11 +26,6 @@
     system,
     ...
   }: {
-    packages.noctaliaConfig = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-      inherit pkgs;
-
-      package = inputs.noctalia.packages.${system}.default;
-      settings = builtins.fromTOML (builtins.readFile ./noctalia.toml);
-    };
+    packages.default = inputs.noctalia.packages.${system}.default;
   };
 }
