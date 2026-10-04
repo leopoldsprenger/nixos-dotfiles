@@ -8,12 +8,9 @@
     hardware.bluetooth.enable = true;
     networking.networkmanager.enable = true;
 
+    # Reference the package from self.packages using the host platform
     environment.systemPackages = [
-      (inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
-        inherit pkgs;
-        package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
-        settings = builtins.fromTOML (builtins.readFile ./noctalia.toml);
-      })
+      self.packages.${pkgs.stdenv.hostPlatform.system}.noctaliaConfig
     ];
 
     home-manager.users.leo = {...}: {
@@ -26,6 +23,11 @@
     system,
     ...
   }: {
-    packages.default = inputs.noctalia.packages.${system}.default;
+    # Define it here so mango.nix and other modules can find it
+    packages.noctaliaConfig = inputs.wrapper-modules.wrappers.noctalia-shell.wrap {
+      inherit pkgs;
+      package = inputs.noctalia.packages.${system}.default;
+      settings = builtins.fromTOML (builtins.readFile ./noctalia.toml);
+    };
   };
 }

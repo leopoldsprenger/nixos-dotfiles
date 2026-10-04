@@ -13,8 +13,8 @@
 
     rawMangoConfigText = ''
       # --- Input ---
-      repeat_rate=35
-      repeat_delay=200
+      repeat_rate=50
+      repeat_delay=300
 
       # Dwindle Layout Setting
       dwindle_smart_split=0
