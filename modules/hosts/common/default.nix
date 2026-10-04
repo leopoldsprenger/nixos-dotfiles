@@ -30,6 +30,8 @@
       self.nixosModules.stride
       self.nixosModules.latex
       self.nixosModules.zathura
+      self.nixosModules.obsidian
+      self.nixosModules.syncthing
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
