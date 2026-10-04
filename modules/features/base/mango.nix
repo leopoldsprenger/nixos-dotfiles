@@ -27,10 +27,10 @@
       gappiv=6
       gappoh=6
       gappov=6
-      borderpx=1
+      borderpx=0
       focuscolor=0x74c7ecb3
       bordercolor=0x31324466
-      border_radius=7
+      border_radius=15
 
       # Hide cursor
       cursor_hide_timeout=3
@@ -39,10 +39,10 @@
       # Blur settings
       blur=1
       blur_optimized=1
-      blur_params_num_passes=4
+      blur_params_num_passes=6
       blur_params_radius=3
-      blur_params_noise=0.05
-      blur_params_saturation=2
+      blur_params_noise=0.08
+      blur_params_saturation=3
 
       # Standard opacity
       focused_opacity=0.93
