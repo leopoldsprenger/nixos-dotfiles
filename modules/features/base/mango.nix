@@ -27,7 +27,7 @@
       gappiv=6
       gappoh=6
       gappov=6
-      borderpx=0
+      borderpx=1
       focuscolor=0x74c7ecb3
       bordercolor=0x31324466
       border_radius=15
@@ -48,6 +48,9 @@
       focused_opacity=0.93
       unfocused_opacity=0.93
 
+      # Strip borders from all apps by default
+      windowrule=isnoborder:1,appid:.*
+
       # --- App-Specific Glaze/Xray Mirror Rules ---
 
       # Firefox Picture-in-Picture
@@ -60,7 +63,7 @@
       windowrule=focused_opacity:0.75,unfocused_opacity:0.75,appid:kitty
 
       # Noctalia UI
-      windowrule=isfloating:1,focused_opacity:0.75,unfocused_opacity:0.75,width:1080,height:920,appid:dev\.noctalia\.Noctalia
+      windowrule=isfloating:1,focused_opacity:0.75,unfocused_opacity:0.75,isnoborder:0,width:1080,height:920,appid:dev\.noctalia\.Noctalia
 
       windowrule=isfloating:1,appid:^stride-quick-capture$
 
