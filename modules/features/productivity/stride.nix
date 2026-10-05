@@ -11,11 +11,36 @@
   }: let
     cfg = config.programs.stride;
 
-    # Built from the repo's own nix/package.nix rather than duplicated here,
-    # so it stays in sync with upstream and picks up withGtk4 for free.
+    # Use the repository's own package definition so it stays in sync
+    # with upstream.
     stride-package = pkgs.callPackage "${inputs.stride-src}/nix/package.nix" {
-      inherit (cfg) withGtk4;
+      withGtk4 = true;
     };
+
+    finalPackage =
+      if
+        cfg.interface
+        == "tui"
+        && cfg.gui.theme == "auto"
+        && cfg.gui.accent == null
+        && !cfg.gui.decorations
+      then cfg.package
+      else
+        cfg.package.override {
+          defaultInterface = cfg.interface;
+          guiTheme = cfg.gui.theme;
+          guiAccent = cfg.gui.accent;
+          guiDecorations = cfg.gui.decorations;
+        };
+
+    syncFlag =
+      {
+        both = "--sync";
+        pull = "--pull";
+        push = "--push";
+      }.${
+        cfg.syncDirection
+      };
   in {
     options.programs.stride = {
       enable = lib.mkEnableOption "Stride, a terminal task manager";
@@ -27,16 +52,35 @@
         description = "The stride package to install.";
       };
 
-      withGtk4 = lib.mkOption {
-        type = lib.types.bool;
-        default = true;
+      interface = lib.mkOption {
+        type = lib.types.enum ["tui" "gui"];
+        default = "tui";
+        example = "gui";
         description = ''
-          Build with GTK4 support, so `stride --quick-capture` opens a
-          small floating GTK4 window instead of falling back to the
-          ncurses dialog in a terminal. See the "Quick capture" section
-          of the project's README for the mangowm window rule/bind that
-          goes with this.
+          Which front end a bare `stride` opens: the terminal app ("tui")
+          or the GTK4 app ("gui").
         '';
+      };
+
+      gui = {
+        theme = lib.mkOption {
+          type = lib.types.enum ["auto" "light" "dark"];
+          default = "auto";
+          description = "GUI colour scheme.";
+        };
+
+        accent = lib.mkOption {
+          type = lib.types.nullOr (lib.types.strMatching "#[0-9a-fA-F]{6}");
+          default = null;
+          example = "#bb9af7";
+          description = "Accent colour for check marks and selection.";
+        };
+
+        decorations = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+          description = "Whether the GUI window asks for a titlebar.";
+        };
       };
 
       mirrorRemote = lib.mkOption {
@@ -44,26 +88,27 @@
         default = null;
         example = "git@github.com:you/stride-data.git";
         description = ''
-          SSH URL of the git repository Stride mirrors your data to, for
-          backup and for syncing between devices.
+          SSH URL of the git repository Stride mirrors your data to,
+          for backup and syncing between devices.
         '';
       };
 
       mirrorEncryptionKeyFile = lib.mkOption {
         type = lib.types.nullOr lib.types.path;
         default = null;
-        description = "Path to the decrypted sops file containing the encryption key.";
+        description = ''
+          Path to the decrypted sops file containing the Stride
+          mirror encryption key.
+        '';
       };
 
       enableSyncTimer = lib.mkOption {
         type = lib.types.bool;
-        default = true;
+        default = cfg.mirrorRemote != null;
+        defaultText = lib.literalExpression "mirrorRemote != null";
         description = ''
-          Run `stride --sync` automatically on a systemd user timer, every
-          `syncInterval`. Set to false to sync manually only (e.g.
-          `systemctl --user start stride-sync.service`, or `stride --sync`
-          by hand) -- useful if you'd rather control exactly when it
-          touches the network.
+          Whether to install the systemd user timer that periodically
+          runs Stride synchronization.
         '';
       };
 
@@ -71,9 +116,17 @@
         type = lib.types.str;
         default = "10m";
         description = ''
-          How often the systemd user timer runs `stride --sync`, as a
-          systemd time span (e.g. "5m", "10min", "1h"). Only takes effect
-          when enableSyncTimer is true.
+          How often the systemd user timer runs Stride synchronization.
+        '';
+      };
+
+      syncDirection = lib.mkOption {
+        type = lib.types.enum ["both" "pull" "push"];
+        default = "both";
+        description = ''
+          What the periodic timer does:
+          "both" pulls remote changes and then pushes local changes,
+          "pull" only pulls, and "push" only pushes.
         '';
       };
     };
@@ -81,11 +134,22 @@
     config = {
       programs.stride = {
         enable = true;
-        withGtk4 = true;
-        enableSyncTimer = true;
+        package = stride-package;
+
+        interface = "gui";
+
+        gui = {
+          theme = "auto";
+          accent = null;
+          decorations = false;
+        };
+
         mirrorRemote = "git@github.com:leopoldsprenger/stride-data.git";
         mirrorEncryptionKeyFile = config.sops.secrets.stride-data-key.path;
+
+        enableSyncTimer = true;
         syncInterval = "10m";
+        syncDirection = "both";
       };
 
       sops.secrets.stride-data-key = {
@@ -101,41 +165,66 @@
           lib,
           ...
         }: {
-          home.packages = [cfg.package];
+          home.packages = [finalPackage];
 
-          # Managed by home-manager activation -- edits here will be overwritten.
+          # Managed by home-manager activation.
           home.activation.setupStrideConfig = lib.hm.dag.entryAfter ["writeBoundary"] ''
             mkdir -p "$HOME/.local/share/stride"
 
             cat <<EOF > "$HOME/.local/share/stride/config"
+            # Managed by home-manager (programs.stride) -- edits here will be overwritten.
             mirror_remote=${cfg.mirrorRemote}
             EOF
 
             KEY_FILE="${toString cfg.mirrorEncryptionKeyFile}"
+
             if [ -f "$KEY_FILE" ]; then
-              echo "mirror_encryption_key=$(cat "$KEY_FILE")" >> "$HOME/.local/share/stride/config"
+              KEY="$(cat "$KEY_FILE")"
+
+              if ! printf '%s' "$KEY" | grep -Eq '^[0-9a-fA-F]{64}$'; then
+                echo "error: Stride encryption key must be exactly 64 hexadecimal characters" >&2
+                exit 1
+              fi
+
+              printf 'mirror_encryption_key=%s\n' "$KEY" \
+                >> "$HOME/.local/share/stride/config"
             fi
 
             chmod 600 "$HOME/.local/share/stride/config"
           '';
 
-          systemd.user.services.stride-sync = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux && cfg.enableSyncTimer) {
-            Unit.Description = "Sync Stride's data to its git mirror";
-            Service = {
-              Type = "oneshot";
-              ExecStart = "${cfg.package}/bin/stride --sync";
-            };
-          };
+          systemd.user.services.stride-sync =
+            lib.mkIf (
+              pkgs.stdenv.hostPlatform.isLinux
+              && cfg.enableSyncTimer
+              && cfg.mirrorRemote != null
+            ) {
+              Unit.Description = "Sync Stride's data to its git mirror";
 
-          systemd.user.timers.stride-sync = lib.mkIf (pkgs.stdenv.hostPlatform.isLinux && cfg.enableSyncTimer) {
-            Unit.Description = "Periodic trigger for stride-sync.service";
-            Timer = {
-              OnStartupSec = "2m";
-              OnUnitActiveSec = cfg.syncInterval;
-              Persistent = true;
+              Service = {
+                Type = "oneshot";
+                ExecStart = "${finalPackage}/bin/stride ${syncFlag}";
+              };
             };
-            Install.WantedBy = ["timers.target"];
-          };
+
+          systemd.user.timers.stride-sync =
+            lib.mkIf (
+              pkgs.stdenv.hostPlatform.isLinux
+              && cfg.enableSyncTimer
+              && cfg.mirrorRemote != null
+            ) {
+              Unit.Description = "Periodic trigger for stride-sync.service";
+
+              Timer = {
+                OnStartupSec = "2m";
+                OnUnitActiveSec = cfg.syncInterval;
+                Persistent = true;
+              };
+
+              Install.WantedBy = ["timers.target"];
+            };
+
+          systemd.user.startServices = lib.mkDefault "sd-switch";
         })
       ];
     };

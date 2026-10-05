@@ -82,8 +82,8 @@
       bind=SUPER,Space,spawn,${lib.getExe noctalia} msg panel-toggle launcher
       bind=SUPER,B,spawn,${lib.getExe pkgs.firefox}
       bind=SUPER,E,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- yazi
-      bind=SUPER,T,spawn_shell,LIBGL_ALWAYS_SOFTWARE=1 ${lib.getExe pkgs.kitty} -- stride
-      bind=SUPER+SHIFT,T,spawn,stride --quick-capture
+      bind=SUPER,T,spawn,${lib.getExe config.programs.stride.package} --gui
+      bind=SUPER+SHIFT,T,spawn,${lib.getExe config.programs.stride.package} --quick-capture
 
       bind=SUPER,M,spawn,${lib.getExe noctalia} msg panel-toggle wallpaper
       bind=SUPER+SHIFT,M,spawn,${lib.getExe noctalia} msg panel-toggle noctalia/wallhaven:browser
