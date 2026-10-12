@@ -32,6 +32,7 @@
       self.nixosModules.zathura
       self.nixosModules.obsidian
       self.nixosModules.syncthing
+      self.nixosModules.tmux
     ];
 
     nix.settings.experimental-features = ["nix-command" "flakes"];
