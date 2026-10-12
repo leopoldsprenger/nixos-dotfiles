@@ -26,6 +26,7 @@ order = [ "bar", "default" ]
         "battery",
         "clock",
         "spacer_4",
+        "stride",
         "notifications"
     ]
     font_family = "JetBrainsMono NF"
@@ -187,7 +188,7 @@ browser_position = "center"
 download_dir = "/home/leo/dotfiles/resources/wallpapers"
 
 [plugins]
-enabled = [ "noctalia/wallhaven", "nightwatch75/file-search" ]
+enabled = [ "noctalia/wallhaven", "nightwatch75/file-search", "leo/stride" ]
 
     [[plugins.source]]
     kind = "git"
@@ -199,6 +200,11 @@ enabled = [ "noctalia/wallhaven", "nightwatch75/file-search" ]
     location = "https://github.com/noctalia-dev/community-plugins"
     name = "community"
 
+    [[plugins.source]]
+    kind = "path"
+    location = "/home/leo/Downloads/stride-test/integrations"
+    name = "dev"
+
 [shell]
 avatar_path = "/home/leo/dotfiles/resources/profile-pictures/hollow-knight.jpg"
 corner_radius_scale = 0.85000001266598701
@@ -206,6 +212,29 @@ font_family = "JetBrainsMono NF"
 
     [shell.animation]
     speed = 2.0000000298023224
+
+    [shell.launcher]
+    categories = false
+    show_app_origin_indicator = false
+    show_icons = false
+
+        [shell.launcher.providers.calculator]
+        prefix = "calc"
+
+        [shell.launcher.providers.emoji]
+        global = false
+        prefix = "emo"
+
+        [shell.launcher.providers.panels]
+        global = false
+        prefix = "pan"
+
+        [shell.launcher.providers.session]
+        global = true
+        prefix = "pow"
+
+        [shell.launcher.providers.wallpaper]
+        prefix = "wall"
 
     [shell.panel]
     control_center_placement = "floating"
@@ -291,6 +320,9 @@ type = "spacer"
 
 [widget.spacer_4]
 type = "spacer"
+
+[widget.stride]
+type = "leo/stride:widget"
 
 [widget.workspaces]
 active_pill_size = 1.5
