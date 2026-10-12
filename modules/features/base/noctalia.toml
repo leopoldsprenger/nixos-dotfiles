@@ -71,14 +71,14 @@ theme_mode_changed = "pkill -USR1 -f qt6ct || true"
 address = "Berlin, Germany"
 
 [lockscreen]
-blur_intensity = 0.0
+blur_intensity = 0.69999998435378075
 tint_intensity = 0.0
 transition = []
 
 [lockscreen_widgets]
 enabled = true
 schema_version = 2
-widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@Virtual-1", "lockscreen-widget-0000000000000002" ]
+widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@Virtual-1" ]
 
     [lockscreen_widgets.grid]
     cell_size = 16
@@ -88,8 +88,8 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@Virtual-1", 
     [lockscreen_widgets.widget."lockscreen-login-box@Virtual-1"]
     box_height = 70.0
     box_width = 400.0
-    cx = 1066.5
-    cy = 922.00006103515625
+    cx = 800.0
+    cy = 513.0
     output = "Virtual-1"
     placement_height = 1000.0
     placement_width = 1600.0
@@ -101,8 +101,8 @@ widget_order = [ "lockscreen-login-box@WL-1", "lockscreen-login-box@Virtual-1", 
         background_opacity = 0.0
         background_radius = 10.0
         center_password_text = true
-        input_opacity = 0.95999999999999996
-        input_radius = 5.0
+        input_opacity = 0.75
+        input_radius = 15.0
         layout = "compact"
         show_caps_lock = true
         show_keyboard_layout = true
@@ -215,8 +215,9 @@ font_family = "JetBrainsMono NF"
 
     [shell.launcher]
     categories = false
+    compact = true
     show_app_origin_indicator = false
-    show_icons = false
+    show_icons = true
 
         [shell.launcher.providers.calculator]
         prefix = "calc"
@@ -226,7 +227,7 @@ font_family = "JetBrainsMono NF"
         prefix = "emo"
 
         [shell.launcher.providers.panels]
-        global = false
+        global = true
         prefix = "pan"
 
         [shell.launcher.providers.session]
@@ -234,7 +235,11 @@ font_family = "JetBrainsMono NF"
         prefix = "pow"
 
         [shell.launcher.providers.wallpaper]
+        global = false
         prefix = "wall"
+
+        [shell.launcher.providers.windows]
+        global = false
 
     [shell.panel]
     control_center_placement = "floating"
@@ -278,7 +283,7 @@ wallpaper_scheme = "m3-content"
 
     [theme.templates]
     builtin_ids = [ "btop", "gtk3", "gtk4", "kitty", "mango", "qt", "starship" ]
-    community_ids = [ "pywalfox-beta4", "neovim", "obsidian", "fastfetch", "zathura", "bat", "yazi" ]
+    community_ids = [ "pywalfox-beta4", "neovim", "obsidian", "fastfetch", "zathura", "bat", "tmux", "yazi" ]
 
         [theme.templates.user.papirus-icons]
         input_path = "templates/papirus-icons/colors"
