@@ -2,7 +2,7 @@
 
 ### Immediate
 
-[ ] install and configure tmux
+[ ] always set thunar to list view declaratively
 [ ] install thunderbird and declaratively set up email providers
 
 ### After
@@ -82,3 +82,4 @@
 [X] fully delete alacritty off my system
 [X] set up an English, Japanese and German keyboard switcher
 [X] disable keyboard layout in noctalia bar
+[X] install and configure tmux

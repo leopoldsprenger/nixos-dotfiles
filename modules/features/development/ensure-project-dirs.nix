@@ -12,7 +12,7 @@
       "school"
       "products"
       "infrastructure"
-      "competition"
+      "competitions"
     ];
   in {
     home-manager.users.leo = {lib, ...}: {
